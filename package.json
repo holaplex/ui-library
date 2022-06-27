@@ -1,5 +1,5 @@
 {
-  "name": "ui-library",
+  "name": "@holaplex/ui-library",
   "version": "0.1.0",
   "description": "Holaplex Marketplace UI Library",
   "main": "dist/cjs/index.js",
