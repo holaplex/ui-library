@@ -17,6 +17,7 @@
     "build": "rimraf dist && rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/holaplex/ui-library.git"
@@ -32,6 +33,10 @@
     "url": "https://github.com/holaplex/ui-library/issues"
   },
   "homepage": "https://github.com/holaplex/ui-library#readme",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@rollup/plugin-commonjs": "^22.0.1",
@@ -41,6 +46,7 @@
     "@types/react": "^18.0.14",
     "babel-loader": "^8.2.5",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-dts": "^4.2.2",
