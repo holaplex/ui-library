@@ -1,0 +1,36 @@
+{
+  "name": "holaplex-ui",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Holaplex modular & composable ui library",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "clsx": "^1.2.1",
+    "postcss": "^8.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.2.4"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.0-alpha.58",
+    "@storybook/addon-interactions": "^7.0.0-alpha.58",
+    "@storybook/addon-links": "^7.0.0-alpha.58",
+    "@storybook/react": "^7.0.0-alpha.58",
+    "@storybook/react-vite": "^7.0.0-alpha.58",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "storybook": "^7.0.0-alpha.58",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}
