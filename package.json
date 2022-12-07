@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
     "postcss": "^8.4.19",

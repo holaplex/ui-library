@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import Spinner from "./Spinner";
+import Spinner from './Spinner';
 
 const meta: Meta<typeof Spinner> = {
-  title: "Components/Spinner",
+  title: 'Components/Spinner',
   component: Spinner,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {
     color: {
       control: {
-        type: "color",
+        type: 'color',
       },
     },
     height: {
       control: {
-        type: "number",
+        type: 'number',
       },
     },
   },
@@ -27,15 +27,15 @@ type Story = StoryObj<typeof Spinner>;
 
 export const Tiny: Story = {
   args: {
-    height: 5,
-    width: 5,
+    height: 10,
+    width: 10,
   },
 };
 
 export const Small: Story = {
   args: {
-    height: 10,
-    width: 10,
+    height: 15,
+    width: 15,
   },
 };
 
