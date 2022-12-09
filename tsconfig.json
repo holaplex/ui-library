@@ -13,10 +13,11 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "declaration": true,
+    "jsx": "react-jsx",
+    "outDir": "./dist",
   },
   "include": ["src", "prettier.config.js"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "src/App.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

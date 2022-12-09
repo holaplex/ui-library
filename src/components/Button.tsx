@@ -2,26 +2,7 @@ import clsx from 'clsx';
 import { useMemo } from 'react';
 import Spinner from './Spinner';
 
-export enum ButtonBackground {
-  White = 'bg-white',
-  Black = 'bg-black',
-  Slate = 'bg-gray-800',
-  Cell = 'bg-gray-900',
-}
-
-export enum ButtonColor {
-  White = 'text-white',
-  Gray = 'text-gray-300 hover:text-white group-focus:text-white disabled:text-gray-300',
-  Slate = 'text-gray-800',
-}
-
-export enum ButtonSize {
-  Tiny = 'tiny',
-  Small = 'small',
-  Large = 'large',
-}
-
-interface ButtonProps {
+export interface ButtonProps {
   variant?: 'default' | 'secondary' | 'success' | 'failure' | 'link';
   size?: 'small' | 'medium' | 'large';
   border: 'circle' | 'rounded' | 'square';
@@ -36,7 +17,7 @@ interface ButtonProps {
   children?: any;
 }
 
-const Button = ({
+export const Button = ({
   variant = 'default',
   border = 'rounded',
   size = 'large',

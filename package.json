@@ -1,8 +1,8 @@
 {
-  "name": "holaplex-ui",
+  "name": "holaplex-ui-library",
   "author": "Holaplex Inc.",
   "main": "lib/index.js",
-  "private": true,
+  "private": false,
   "version": "0.1.0",
   "description": "Holaplex modular & composable ui library",
   "type": "module",
@@ -11,7 +11,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "clean": "rm -rf dist",
+    "build-npm": "npm run clean && tsc && cp package.json README.MD ./dist"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
