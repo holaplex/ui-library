@@ -1,5 +1,7 @@
 {
   "name": "holaplex-ui",
+  "author": "Holaplex Inc.",
+  "main": "lib/index.js",
   "private": true,
   "version": "0.1.0",
   "description": "Holaplex modular & composable ui library",

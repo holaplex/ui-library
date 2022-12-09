@@ -17,5 +17,6 @@
     "jsx": "react-jsx"
   },
   "include": ["src", "prettier.config.js"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
