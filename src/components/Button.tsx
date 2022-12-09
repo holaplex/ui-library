@@ -1,103 +1,116 @@
-import clsx from "clsx";
-import { useMemo } from "react";
-import Spinner from "./Spinner";
+import clsx from 'clsx';
+import { useMemo } from 'react';
+import Spinner from './Spinner';
 
 export enum ButtonBackground {
-  White = "bg-white",
-  Black = "bg-black",
-  Slate = "bg-gray-800",
-  Cell = "bg-gray-900",
+  White = 'bg-white',
+  Black = 'bg-black',
+  Slate = 'bg-gray-800',
+  Cell = 'bg-gray-900',
 }
 
 export enum ButtonColor {
-  White = "text-white",
-  Gray = "text-gray-300 hover:text-white group-focus:text-white disabled:text-gray-300",
-  Slate = "text-gray-800",
-}
-
-export enum ButtonBorder {
-  Gray = "gray",
-  White = "white",
-  Black = "black",
+  White = 'text-white',
+  Gray = 'text-gray-300 hover:text-white group-focus:text-white disabled:text-gray-300',
+  Slate = 'text-gray-800',
 }
 
 export enum ButtonSize {
-  Tiny = "tiny",
-  Small = "small",
-  Large = "large",
+  Tiny = 'tiny',
+  Small = 'small',
+  Large = 'large',
 }
 
 interface ButtonProps {
-  background?: ButtonBackground;
-  border?: ButtonBorder;
-  color?: ButtonColor;
-  size?: ButtonSize;
+  variant?: 'default' | 'secondary' | 'success' | 'failure' | 'link';
+  size?: 'small' | 'medium' | 'large';
+  border: 'circle' | 'rounded' | 'square';
   loading?: boolean;
   block?: boolean;
   icon?: React.ReactElement;
   onClick?: () => any;
   disabled?: boolean;
   circle?: boolean;
-  htmlType?: "button" | "submit" | "reset" | undefined;
+  htmlType?: 'button' | 'submit' | 'reset' | undefined;
   className?: string;
   children?: any;
 }
 
 const Button = ({
-  background = ButtonBackground.Black,
-  border,
-  color = ButtonColor.White,
-  size = ButtonSize.Large,
+  variant = 'default',
+  border = 'rounded',
+  size = 'large',
   loading = false,
   block = false,
   icon,
   onClick,
   disabled = false,
   circle = false,
-  htmlType = "button",
+  htmlType = 'button',
   className,
   children,
 }: ButtonProps): JSX.Element => {
   const spinnerSize = useMemo(() => {
     switch (size) {
-      case ButtonSize.Tiny:
-        return "10px";
-      case ButtonSize.Small:
-        return "15px";
-      case ButtonSize.Large:
-        return "20px";
+      case 'small':
+        return '10px';
+      case 'medium':
+        return '15px';
+      case 'large':
+        return '20px';
+      default:
+        return '15px';
     }
   }, [size]);
 
   const spinnerColor = useMemo(() => {
-    switch (color) {
-      case ButtonColor.Slate:
-        return "#17161C";
-      case ButtonColor.Gray:
-        return "#8B8B8E";
-      case ButtonColor.White:
-        return "#fff";
+    switch (variant) {
+      case 'default':
+        return '#17161C';
+      case 'secondary':
+        return '#bfbfc3';
+      case 'success':
+        return '#ffffff';
+      case 'failure':
+        return '#ffffff';
+      case 'link':
+        return '#1f75cb';
+      default:
+        return '#ffffff';
     }
-  }, [color]);
+  }, [variant]);
+
+  const buttonColor = useMemo(() => {
+    switch (variant) {
+      case 'default':
+        return 'bg-button-default text-white';
+      case 'secondary':
+        return 'bg-button-secondary text-black';
+      case 'link':
+        return 'bg-none text-button-default';
+      case 'success':
+        return 'bg-button-success text-white';
+      case 'failure':
+        return 'bg-button-failure text-white';
+    }
+  }, [variant]);
+
   return (
     <button
       className={clsx(
         clsx,
-        "group flex grow-0 items-center justify-center rounded-full text-center font-bold",
+        'group flex grow-0 items-center justify-center rounded-full text-center font-bold',
         className,
-        color,
-        background,
+        buttonColor,
         {
-          "border-2 border-gray-300 bg-none hover:border-white active:text-white disabled:border-gray-300":
-            border === ButtonBorder.Gray,
-          "border-2 border-white bg-none hover:border-gray-300 active:text-white disabled:border-gray-300":
-            border === ButtonBorder.White,
-          "w-full": block,
-          "py-1 px-4 text-sm":
-            size === ButtonSize.Tiny || size === ButtonSize.Small,
-          "py-3 px-6": size === ButtonSize.Large,
-          "disabled:opacity-50": disabled,
-          "px-0 py-0": circle,
+          'rounded-md': border === 'rounded',
+          'rounded-full': border === 'circle',
+          'rounded-none': border === 'square',
+          'w-full': block,
+          'py-1 px-2 text-sm': size === 'small' || size === 'medium',
+          'py-2 px-4': size === 'large',
+          'disabled:opacity-50': disabled,
+          'px-0 py-0': circle,
         }
       )}
       disabled={disabled}
@@ -106,11 +119,11 @@ const Button = ({
     >
       <div
         className={clsx(
-          "flex h-full w-full grow-0 items-center justify-center gap-1 rounded-full text-center",
+          'flex h-full w-full grow-0 items-center justify-center gap-1 rounded-full text-center',
           {
-            "py-1 px-4 text-sm": size === ButtonSize.Tiny,
-            "py-2 px-5 text-base": size === ButtonSize.Small,
-            "py-2 px-6 text-lg": size === ButtonSize.Large,
+            'py-1 px-4 text-sm': size === 'small',
+            'py-2 px-5 text-base': size === 'medium',
+            'py-2 px-6 text-lg': size === 'large',
           }
         )}
       >

@@ -17,9 +17,15 @@ export default meta;
 
 export const Plain = ({ value, onChange, variant }: ButtonGroupProps<number>) => {
   return (
-    <ButtonGroup value={value} onChange={onChange} variant={variant}>
+    <ButtonGroup value={10} onChange={onChange} variant={'plain'}>
       <ButtonGroup.Option plain value={10}>
         First
+      </ButtonGroup.Option>
+      <ButtonGroup.Option plain value={20}>
+        Second
+      </ButtonGroup.Option>
+      <ButtonGroup.Option plain value={30}>
+        Third
       </ButtonGroup.Option>
     </ButtonGroup>
   );
