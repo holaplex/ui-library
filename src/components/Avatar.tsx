@@ -12,6 +12,7 @@ export enum AvatarSize {
 
 interface AvatarProps {
   handle?: string;
+  emoji?: string;
   src?: string;
   circle?: boolean;
   size: AvatarSize;
@@ -29,6 +30,8 @@ export function Avatar({ src, circle, size, handle }: AvatarProps) {
         'rounded-full': circle,
         'w-12': size === AvatarSize.Standard,
         'w-16': size === AvatarSize.Large,
+        'w-20': size === AvatarSize.Jumbo,
+        'w-24': size === AvatarSize.Gigantic,
         'rounded-md':
           !circle &&
           [AvatarSize.Tiny, AvatarSize.Small, AvatarSize.Standard, AvatarSize.Large].includes(size),
@@ -54,12 +57,12 @@ export function Avatar({ src, circle, size, handle }: AvatarProps) {
             'flex flex-col justify-center items-center',
             {
               'text-xs p-1': size === (AvatarSize.Tiny | AvatarSize.Small),
-              'text-base p-2': size === (AvatarSize.Standard | AvatarSize.Large),
-              'text-lg': size === (AvatarSize.Jumbo | AvatarSize.Gigantic),
+              'text-lg p-2': size === (AvatarSize.Standard | AvatarSize.Large),
+              'text-3xl': size === (AvatarSize.Jumbo | AvatarSize.Gigantic),
             }
           )}
         >
-          {handle ? firstLast(handle) : 'N/A'}
+          {handle ? firstLast(handle) : '🐵'}
         </div>
       )}
     </div>
