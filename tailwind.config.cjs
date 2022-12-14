@@ -7,6 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        theme: {
+          default: '#1f75cb',
+          secondary: '#bfbfc3',
+        },
         button: {
           default: '#1f75cb',
           secondary: '#bfbfc3',
