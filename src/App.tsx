@@ -1,21 +1,24 @@
 // Use this area as a playground/stub for testing new development
 
+import { useState } from 'react';
+import { Avatar, AvatarSize } from './components/Avatar';
+import Button from './components/Button';
 import { ButtonGroup } from './components/ButtonGroup';
 
 function App() {
+  const [value, setValue] = useState(0);
+
   return (
     <>
-      <ButtonGroup value={10} onChange={() => {}} variant="plain">
-        <ButtonGroup.Option plain value={10}>
-          First Choice
-        </ButtonGroup.Option>
-        <ButtonGroup.Option plain value={20}>
-          Second Choice
-        </ButtonGroup.Option>
-        <ButtonGroup.Option plain value={30}>
-          Third Choice
-        </ButtonGroup.Option>
+      <Avatar circle size={AvatarSize.Large} handle={'mrue'} />
+      <ButtonGroup border value={value} onChange={(val) => setValue(val || 0)} variant={'plain'}>
+        <ButtonGroup.Option value={0}>Button 1</ButtonGroup.Option>
+        <ButtonGroup.Option value={10}>Button 2</ButtonGroup.Option>
+        <ButtonGroup.Option value={20}>Button 3</ButtonGroup.Option>
       </ButtonGroup>
+      <Button border={'rounded'} circle>
+        Button
+      </Button>
     </>
   );
 }

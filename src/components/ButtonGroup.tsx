@@ -7,6 +7,7 @@ export interface ButtonGroupProps<T> {
   children: ReactNode;
   value: T;
   onChange: (value: T | undefined) => void;
+  border?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export function ButtonGroup<T>({
   children,
   value,
   onChange,
+  border = false,
   className,
 }: ButtonGroupProps<T>): JSX.Element {
   return (
@@ -22,8 +24,9 @@ export function ButtonGroup<T>({
       value={value}
       onChange={onChange}
       className={clsx('flex max-w-full flex-row items-center justify-start gap-4', className, {
-        'rounded-full border border-gray-800 px-1 py-1': variant === 'oval',
-        '': variant === 'plain',
+        'rounded-full ': variant === 'oval',
+        'rounded-md': variant === 'plain',
+        'border border-gray-800 px-1 py-1': border === true,
       })}
     >
       {children}
@@ -45,12 +48,15 @@ function ButtonGroupOption<T>({ children, value, plain }: ButtonGroupOptionProps
       className={({ checked }) =>
         clsx(
           'flex items-center justify-center text-base',
+          'h-12 w-28',
           !plain && 'h-12 w-28 rounded-full',
           checked
             ? plain
-              ? 'border-b border-b-white bg-gray-800 p-1 rounded-md text-white'
-              : 'rounded-full bg-gray-800 text-black'
-            : 'cursor-pointer bg-transparent text-gray-300 hover:bg-gray-800 p-1 rounded-md hover:text-gray-200 transition duration-150'
+              ? 'border-b border-b-white bg-button-default py-1 px-2 rounded-md text-white'
+              : 'rounded-full bg-button-default text-white'
+            : plain
+            ? 'cursor-pointer bg-transparent text-gray-300 hover:bg-button-default opacity-80 p-1 rounded-md hover:text-white transition duration-150'
+            : 'rounded-full cursor-pointer bg-transparent text-gray-300 opacity-80 hover:bg-button-default p-1 hover:text-white transition duration-150'
         )
       }
     >
