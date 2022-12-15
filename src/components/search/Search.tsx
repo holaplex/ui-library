@@ -1,4 +1,4 @@
-import React, { FC, Fragment, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, { Fragment, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { DebounceInput } from 'react-debounce-input';
@@ -6,35 +6,17 @@ import clsx from 'clsx';
 
 export interface SearchProps {
   children: ReactNode;
+  onChange: (selected: any) => void;
 }
 
-export default function Search({ children }: SearchProps) {
+export function Search({ children, onChange }: SearchProps) {
   const [selected, setSelected] = useState<any>(null);
-  //const router = useRouter();
 
   return (
     <Combobox
       onChange={(selection) => {
         setSelected(selection);
-        // switch (selection?.__typename) {
-        //   case 'CollectionDocument':
-        //     if (!selection.id) {
-        //       // TODO: have a fallback to view these
-        //       console.error('Missing verified collectiona address');
-        //       break;
-        //     }
-        //     router.push(`/collections/${selection.id}`);
-        //     break;
-        //   case 'Nft':
-        //     router.push(`/nfts/${selection.mintAddress}`);
-        //     break;
-        //   case 'Wallet':
-        //     router.push(`/profiles/${selection.address}`);
-        //     break;
-        //   default:
-        //     console.error('Unknown content whilst searching');
-        //     break;
-        // }
+        onChange(selected);
       }}
     >
       {children}
@@ -203,28 +185,22 @@ function SearchGroup<T>({ title, children, result }: SearchGroupProps<T>): JSX.E
 Search.Group = SearchGroup;
 
 interface SearchResultProps {
-  slug: string;
-  actionUrl: string;
-  image: string;
   name?: string;
-  value: string;
+  image: string;
+  value: any;
+  key: string;
+  onClick: () => void;
 }
 
 function CollectionSearchResult({
   name,
   image,
   value,
-  slug,
-  actionUrl,
+  key,
+  onClick,
 }: SearchResultProps): JSX.Element {
   return (
-    <Combobox.Option
-      key={`collection-${slug}`}
-      value={value}
-      //   onClick={useCallback(() => {
-      //     router.push(actionUrl);
-      //   }, [router, slug])}
-    >
+    <Combobox.Option key={key} value={value} onClick={onClick}>
       {({ active }) => (
         <div
           className={clsx(
@@ -235,7 +211,7 @@ function CollectionSearchResult({
           <div className="flex flex-row items-center gap-6">
             <img
               src={image}
-              alt={name || slug}
+              alt={name || key}
               className="aspect-square h-10 w-10 overflow-hidden rounded-md text-sm"
             />
             <p className="m-0 text-sm font-bold">{name}</p>
@@ -254,20 +230,14 @@ interface MintAddressSearchResultProps extends SearchResultProps {
 
 function MintAddressSearchResult({
   creator,
-  slug,
-  actionUrl,
   name,
   image,
   value,
+  key,
+  onClick,
 }: MintAddressSearchResultProps): JSX.Element {
   return (
-    <Combobox.Option
-      key={`nft-${slug}`}
-      value={value}
-      //   onClick={useCallback(() => {
-      //     router.push(actionUrl);
-      //   }, [router, slug])}
-    >
+    <Combobox.Option key={key} value={value} onClick={onClick}>
       {({ active }) => (
         <div
           className={clsx(
@@ -278,7 +248,7 @@ function MintAddressSearchResult({
           <div className="flex flex-row items-center gap-6">
             <img
               src={image}
-              alt={name || slug}
+              alt={name || key}
               className="aspect-square h-10 w-10 overflow-hidden rounded-md text-sm"
             />
             <p className="m-0 text-sm font-bold">{name}</p>
@@ -305,20 +275,14 @@ interface ProfileSearchResultProps extends SearchResultProps {
 
 function ProfileSearchResult({
   image,
-  slug,
-  actionUrl,
   displayName,
   shortAddress,
   value,
+  key,
+  onClick,
 }: ProfileSearchResultProps): JSX.Element | null {
   return (
-    <Combobox.Option
-      key={`profile-${slug}`}
-      value={value}
-      //   onClick={useCallback(() => {
-      //     router.push(actionUrl);
-      //   }, [router, slug])}
-    >
+    <Combobox.Option key={key} value={value} onClick={onClick}>
       {({ active }) => (
         <div
           className={clsx(
@@ -330,7 +294,7 @@ function ProfileSearchResult({
             <div className="flex h-10 w-10 overflow-clip rounded-full bg-gray-700">
               <img
                 src={image}
-                alt={`profile-${slug}`}
+                alt={displayName || key}
                 className="min-h-full min-w-full object-cover"
               />
             </div>
