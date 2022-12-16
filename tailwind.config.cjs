@@ -10,7 +10,13 @@ module.exports = {
         theme: {
           default: '#1f75cb',
           secondary: '#bfbfc3',
+          dialog: {
+            background: '#f8fafc',
+            secondary: '#e2e8f0',
+            text: '#0f172a',
+          },
         },
+        
         button: {
           default: '#1f75cb',
           secondary: '#bfbfc3',

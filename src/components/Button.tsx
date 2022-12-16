@@ -80,7 +80,7 @@ export const Button = ({
     <button
       className={clsx(
         clsx,
-        'group flex grow-0 items-center justify-center rounded-full text-center font-bold',
+        'group flex grow-0 items-center justify-center rounded-full text-center',
         className,
         buttonColor,
         {
