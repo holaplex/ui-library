@@ -15,9 +15,6 @@ interface BuyableData {
   auctionHouse: {
     fee: number;
   };
-  viewer?: {
-    solBalance: number;
-  };
 }
 
 interface RenderProps {
@@ -45,6 +42,9 @@ interface BuyableProps {
     cancelButton?: string;
     connectToBuyButton?: string;
   };
+  viewer?: {
+    solBalance: number;
+  };
   children: (args: RenderProps) => any;
 }
 
@@ -68,6 +68,7 @@ export function Buyable({
     cancelButton: 'Cancel',
     connectToBuyButton: 'Connect to purchase',
   },
+  viewer,
   children,
 }: BuyableProps) {
   const [open, setOpen] = useState(false);
@@ -167,11 +168,11 @@ export function Buyable({
                   <p className="text-base font-medium text-gray-300">{text.marketplaceFee}</p>
                   <p className="text-base font-medium text-gray-300">{data?.auctionHouse.fee}%</p>
                 </div>
-                {data?.viewer && (
+                {viewer && (
                   <div className="flex flex-row justify-between">
                     <p className="text-base font-medium text-gray-300">{text.currentBalance}</p>
                     <p className="flex flex-row items-center text-base font-medium text-gray-300">
-                      <Icon.Sol /> {data?.viewer?.solBalance}
+                      <Icon.Sol /> {viewer?.solBalance}
                     </p>
                   </div>
                 )}
