@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import Spinner from '../Spinner';
+import Spinner from '../spinner/Spinner';
 
 export interface ButtonProps {
   variant?: 'default' | 'secondary' | 'success' | 'failure' | 'link';
