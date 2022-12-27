@@ -1,7 +1,7 @@
 // Use this area as a playground/stub for testing new development
 
 import { useState } from 'react';
-import { Avatar, AvatarSize } from './components/Avatar';
+import { Avatar, AvatarSize } from './components/avatar/Avatar';
 import Button from './components/Button';
 import { ButtonGroup } from './components/ButtonGroup';
 import Select from './components/Select';

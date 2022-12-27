@@ -1,7 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 export interface SelectProps<T> {
   value: T;
