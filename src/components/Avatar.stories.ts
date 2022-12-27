@@ -29,6 +29,6 @@ export const Image: Story = {
   args: {
     size: AvatarSize.Standard,
     circle: true,
-    src: 'https://nightmarket.holaplex.dev/images/launchpad/motley-launchpad-nft.png',
+    src: '/avatar.png',
   },
 };

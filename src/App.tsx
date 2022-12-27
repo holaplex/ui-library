@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Avatar, AvatarSize } from './components/Avatar';
 import Button from './components/Button';
 import { ButtonGroup } from './components/ButtonGroup';
+import Select from './components/Select';
 
 function App() {
   const [value, setValue] = useState(0);
@@ -19,6 +20,14 @@ function App() {
       <Button border={'rounded'} circle>
         Button
       </Button>
+      <Select
+        value={0}
+        onChange={() => {}}
+        options={[
+          { label: 'Option 1', value: 0 },
+          { label: 'Option 1', value: 0 },
+        ]}
+      />
     </>
   );
 }
