@@ -23,8 +23,8 @@ interface FormLabelProps
 
 function FormLabel({ name, className, children, ...props }: FormLabelProps): JSX.Element {
   return (
-    <label className="mb-6 flex flex-col gap-2" {...props}>
-      <span className="font-semibold text-white">{name}</span>
+    <label className="form-label" {...props}>
+      <span className="fform-label-text">{name}</span>
       {children}
     </label>
   );
@@ -36,7 +36,7 @@ interface FormErrorProps {
 
 function FormError({ message }: FormErrorProps): JSX.Element | null {
   if (message) {
-    return <p className="whitespace-nowrap text-left text-sm text-red-500">{message}</p>;
+    return <p className="form-error">{message}</p>;
   }
 
   return null;
@@ -58,13 +58,7 @@ const FormInput = forwardRef(function FormInput(
   ref
 ) {
   return (
-    <div
-      className={clsx(
-        'input flex w-full flex-row items-center justify-start rounded-md border border-gray-800 bg-gray-800 p-2 text-white focus-within:border-white focus:ring-0 focus:ring-offset-0',
-        { 'focus-within:border-red-500': error },
-        className
-      )}
-    >
+    <div className={clsx('form-input', { 'focus-within:form-input-error': error }, className)}>
       {icon && icon}
       <input
         {...props}
