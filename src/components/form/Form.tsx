@@ -24,7 +24,7 @@ interface FormLabelProps
 function FormLabel({ name, className, children, ...props }: FormLabelProps): JSX.Element {
   return (
     <label className="form-label" {...props}>
-      <span className="fform-label-text">{name}</span>
+      <span className="form-label-text">{name}</span>
       {children}
     </label>
   );
