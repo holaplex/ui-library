@@ -4,8 +4,6 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -13,11 +11,18 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "declaration": true,
+    "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "./dist",
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "declarationMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "react-vite-library": ["src/components/index.ts"]
+    },
+    "typeRoots": ["node_modules/@types", "src/components/index.d.ts"]
   },
-  "include": ["src", "prettier.config.js"],
-  "exclude": ["node_modules", "src/App.tsx"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

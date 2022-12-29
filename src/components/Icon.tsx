@@ -6,6 +6,10 @@ export interface IconProps {
   height?: number;
 }
 
+export function Icon() {
+  return <div></div>;
+}
+
 function CopyIcon({ className = 'w-4 h-4' }: IconProps) {
   return (
     <svg className={className} viewBox={`0 0 24 24`} fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,15 +44,13 @@ function CurrencyIcon({ className, width = 16, height = 16 }: IconProps) {
 
 Icon.Currency = CurrencyIcon;
 
-export default function Icon() {
-  return <div></div>;
-}
-
-function SolScanIcon({ className, width = 12, height = 12 }: IconProps) {
+function SolScanIcon({ className = 'h-3 w-3', width = 12, height = 12 }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={'h-3 w-3'}
+      className={className}
+      height={height}
+      width={width}
       fill="none"
       viewBox="1097 744 136 136"
     >
@@ -314,7 +316,7 @@ Icon.Web = WebIcon;
 
 function SauceIcon({ className = 'h-4 w-auto' }: { className?: string }) {
   return (
-    <svg className="h-4 w-auto" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M15.7414 8.09734C15.7414 12.1876 12.4395 15.5 8.3707 15.5C4.30188 15.5 1 12.1876 1 8.09734C1 4.00704 4.30188 0.694656 8.3707 0.694656C12.4395 0.694656 15.7414 4.00704 15.7414 8.09734Z"
         fill="#17161C"

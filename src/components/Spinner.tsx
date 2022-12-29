@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
 interface SpinnerProps {
   color?: string;
@@ -7,19 +7,14 @@ interface SpinnerProps {
   className?: string;
 }
 
-const Spinner = ({
-  color,
-  height,
-  width,
-  className,
-}: SpinnerProps): JSX.Element => {
+export const Spinner = ({ color, height, width, className }: SpinnerProps): JSX.Element => {
   return (
     <div className="flex justify-center items-center">
       <div
         className={clsx(
           clsx,
           className,
-          "spinner-border animate-spin inline-block border-1 rounded-full text-gray-600"
+          'spinner-border animate-spin inline-block border-1 rounded-full text-gray-600'
         )}
         style={{
           width: width || 32,
@@ -30,5 +25,3 @@ const Spinner = ({
     </div>
   );
 };
-
-export default Spinner;

@@ -11,7 +11,7 @@ export interface SelectProps<T> {
   variant: 'oval' | 'plain';
 }
 
-export default function Select<T>({
+export function Select<T>({
   variant = 'oval',
   value,
   onChange,

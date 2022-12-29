@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Avatar, AvatarSize } from './components/Avatar';
 import Button from './components/Button';
 import { ButtonGroup } from './components/ButtonGroup';
-import Select from './components/Select';
+import { Select } from './components/Select';
 
 function App() {
   const [value, setValue] = useState(0);

@@ -12,7 +12,7 @@ type ModalProps = {
   scroll?: boolean;
 };
 
-export default function Modal(props: ModalProps) {
+export function Modal(props: ModalProps) {
   return (
     <Transition appear show={props.open} as={Fragment}>
       <Dialog as="div" className={`font-sans`} onClose={() => props.setOpen(false)}>
