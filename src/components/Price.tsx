@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Icon from './icon/Icon';
+import Icon from './Icon';
 
 interface PriceProps {
   price?: number | string;
