@@ -27,6 +27,7 @@ function App() {
           { label: 'Option 1', value: 0 },
           { label: 'Option 1', value: 0 },
         ]}
+        variant={'plain'}
       />
     </>
   );

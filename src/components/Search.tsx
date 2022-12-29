@@ -36,7 +36,7 @@ interface SearchInputProps {
 
 const getOs = () => {
   const os = ['Win32', 'Mac']; // add your OS values
-  return os.find((v) => (global as any).window?.navigator.platform.indexOf(v) >= 0);
+  return os.find((v) => window?.navigator.platform.indexOf(v) >= 0);
 };
 
 function SearchInput({

@@ -94,7 +94,7 @@ button:focus-visible {
 }
 
 .form-input {
-  @apply input flex w-full flex-row items-center justify-start rounded-md border border-gray-800 bg-gray-800 p-2 text-white focus-within:border-white focus:ring-0 focus:ring-offset-0;
+  @apply flex w-full flex-row items-center justify-start rounded-md border border-gray-800 bg-gray-800 p-2 text-white focus-within:border-white focus:ring-0 focus:ring-offset-0;
 }
 
 .form-input-error {
