@@ -1,57 +1,8 @@
 {
-  "name": "holaplex-ui-library",
-  "author": "Holaplex Inc.",
-  "private": false,
-  "version": "0.1.23",
-  "description": "Holaplex modular & composable ui library",
-  "type": "module",
-  "files": [
-    "dist"
+  "name": "holaplexui",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/react-vite-library.es.js",
-      "require": "./dist/react-vite-library.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
-  },
-  "main": "./dist/react-vite-library.umd.js",
-  "module": "./dist/react-vite-library.es.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "build-npm": "npm run clean && tsc && cp package.json README.MD ./dist"
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.7.4",
-    "@heroicons/react": "^2.0.13",
-    "@react-hook/window-size": "^3.1.1",
-    "clsx": "^1.2.1",
-    "react-debounce-input": "^3.3.0",
-    "react-hook-form": "^7.41.1",
-    "react-intersection-observer": "^9.4.1"
-  },
-  "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.24",
-    "@types/react-dom": "^18.0.8",
-    "@vitejs/plugin-react": "^2.2.0",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.20",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.6.4",
-    "vite": "^3.2.3",
-    "vite-plugin-dts": "^1.7.1",
-    "vite-plugin-linter": "^2.0.2",
-    "vite-tsconfig-paths": "^4.0.3"
-  },
-  "peerDependencies": {
-    "react": "16.8.0 || >=17.x",
-    "react-dom": "16.8.0 || >=17.x"
-  }
+  "scripts": {}
 }
