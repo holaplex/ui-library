@@ -4,13 +4,13 @@ import { useRef } from 'react';
 
 export default function App() {
   const mobileSearchRef = useRef<HTMLDivElement>(null!);
-  let searchTerm = 'DeGods';
+  let searchTerm = '';
   let searching = true;
   let results = null;
   return (
     <div className='flex flex-col gap-4 justify-center items-center p-4 bg-gray-800'>
       <Search onChange={() => {}}>
-        <div className='fixed w-full md:relative inset-0 h-14 px-4 py-2'>
+        <div className='w-full md:relative inset-0 h-14 px-4 py-2'>
           <Search.Input
             placeholderText='Search..'
             value={searchTerm}
