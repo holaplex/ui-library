@@ -15,15 +15,15 @@ type ModalProps = {
 export function Modal(props: ModalProps) {
   return (
     <Transition appear show={props.open} as={Fragment}>
-      <Dialog as="div" className={`font-sans`} onClose={() => props.setOpen(false)}>
+      <Dialog as='div' className={`font-sans`} onClose={() => props.setOpen(false)}>
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          enter='ease-out duration-300'
+          enterFrom='opacity-0'
+          enterTo='opacity-100'
+          leave='ease-in duration-200'
+          leaveFrom='opacity-100'
+          leaveTo='opacity-0'
         >
           <div
             className={clsx(
@@ -50,12 +50,12 @@ export function Modal(props: ModalProps) {
           >
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
+              enter='ease-out duration-300'
+              enterFrom='opacity-0 scale-95'
+              enterTo='opacity-100 scale-100'
+              leave='ease-in duration-200'
+              leaveFrom='opacity-100 scale-100'
+              leaveTo='opacity-0 scale-95'
             >
               <Dialog.Panel
                 className={clsx(
@@ -66,15 +66,15 @@ export function Modal(props: ModalProps) {
                 )}
               >
                 <button
-                  type="button"
+                  type='button'
                   onClick={() => props.setOpen(false)}
-                  className="absolute -top-2 -right-2 z-50 rounded-full bg-white p-1 hover:bg-gray-100 hover:text-gray-400"
+                  className='absolute -top-2 -right-2 z-50 rounded-full bg-white p-1 hover:bg-gray-100 hover:text-gray-400'
                 >
                   {/* <Close color={`#ffffff`} /> */}
-                  <XMarkIcon className="h-4 w-4 text-gray-900" />
+                  <XMarkIcon className='h-4 w-4 text-gray-900' />
                 </button>
                 {props.title && (
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
+                  <Dialog.Title as='h3' className='text-lg font-medium leading-6 text-white'>
                     {props.title}
                   </Dialog.Title>
                 )}

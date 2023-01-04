@@ -113,7 +113,7 @@ export const Button = ({
             height={spinnerSize}
             width={spinnerSize}
             color={spinnerColor}
-            className="inline aspect-square mr-2"
+            className='inline aspect-square mr-2'
           />
         )}
         {icon && icon}

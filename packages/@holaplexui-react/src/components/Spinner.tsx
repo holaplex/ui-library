@@ -9,13 +9,9 @@ interface SpinnerProps {
 
 export const Spinner = ({ color, height, width, className }: SpinnerProps): JSX.Element => {
   return (
-    <div className="flex justify-center items-center">
+    <div className='flex items-center justify-center'>
       <div
-        className={clsx(
-          clsx,
-          className,
-          'spinner-border animate-spin inline-block border-1 rounded-full text-gray-600'
-        )}
+        className={clsx(clsx, className, 'spinner-border inline-block animate-spin rounded-full')}
         style={{
           width: width || 32,
           height: height || 32,

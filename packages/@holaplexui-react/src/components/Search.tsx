@@ -76,17 +76,17 @@ function SearchInput({
     <div className={clsx('group relative block w-full transition-all', className)}>
       <button
         onClick={useCallback(() => searchInputRef?.current?.focus(), [searchInputRef])}
-        className="absolute left-4 flex h-full cursor-pointer items-center rounded-full transition-all duration-300 ease-in-out hover:scale-105"
+        className='absolute left-4 flex h-full cursor-pointer items-center rounded-full transition-all duration-300 ease-in-out hover:scale-105'
       >
-        <MagnifyingGlassIcon className="h-6 w-6 text-gray-300" aria-hidden="true" />
+        <MagnifyingGlassIcon className='h-6 w-6 text-gray-300' aria-hidden='true' />
       </button>
       <DebounceInput
         minLength={2}
         debounceTimeout={300}
-        autoComplete="off"
-        autoCorrect="off"
-        className="block w-full rounded-full border-2 border-gray-900 bg-transparent py-2 pl-12 pr-6 text-base text-white transition-all hover:border-white focus:border-white focus:placeholder-gray-400 focus:outline-none md:py-2"
-        type="search"
+        autoComplete='off'
+        autoCorrect='off'
+        className='block w-full rounded-full border-2 border-gray-900 bg-transparent py-2 pl-12 pr-6 text-base text-white transition-all hover:border-white focus:border-white focus:placeholder-gray-400 focus:outline-none md:py-2'
+        type='search'
         onFocus={onFocus}
         onBlur={onBlur}
         value={value}
@@ -96,8 +96,8 @@ function SearchInput({
         element={Combobox.Input}
         autoFocus={autofocus}
       />
-      <button className="pointer-events-none absolute right-4 top-0 hidden h-full  items-center justify-center md:flex">
-        <kbd className=" hidden h-6 items-center justify-center rounded bg-gray-800 px-2 text-sm text-gray-300 group-focus-within:flex group-hover:flex">
+      <button className='pointer-events-none absolute right-4 top-0 hidden h-full  items-center justify-center md:flex'>
+        <kbd className='hidden h-6 items-center justify-center rounded bg-gray-800 px-2 text-sm text-gray-300 group-focus-within:flex group-hover:flex'>
           {searchKeyboardPrompt}
         </kbd>
       </button>
@@ -125,33 +125,33 @@ function SearchResults({
   return (
     <Transition
       as={Fragment}
-      leave="transition ease-in duration-100"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0"
+      leave='transition ease-in duration-100'
+      leaveFrom='opacity-100'
+      leaveTo='opacity-0'
       afterLeave={() => {}}
     >
-      <Combobox.Options className="scrollbar-thumb-rounded-full absolute top-4 z-50 h-[calc(100vh-45px)] w-full gap-6 overflow-y-scroll rounded-md bg-gray-900 p-4 shadow-lg shadow-black transition ease-in-out scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800 md:top-10 md:max-h-96">
+      <Combobox.Options className='scrollbar-thumb-rounded-full absolute top-4 z-50 h-[calc(100vh-45px)] w-full gap-6 overflow-y-scroll rounded-md bg-gray-900 p-4 shadow-lg shadow-black transition ease-in-out scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800 md:top-10 md:max-h-96'>
         {searching ? (
           <>
             <SearchLoadingItem />
-            <SearchLoadingItem variant="circle" />
+            <SearchLoadingItem variant='circle' />
             <SearchLoadingItem />
-            <SearchLoadingItem variant="circle" />
+            <SearchLoadingItem variant='circle' />
           </>
         ) : hasResults ? (
           children
         ) : (
           <>
             {enabled ? (
-              <div className="flex h-6 w-full items-center justify-center">
-                <p className="m-0 text-center text-base font-medium">{emptyResultText}</p>
+              <div className='flex h-6 w-full items-center justify-center'>
+                <p className='m-0 text-center text-base font-medium'>{emptyResultText}</p>
               </div>
             ) : (
               <>
                 <SearchLoadingItem />
-                <SearchLoadingItem variant="circle" />
+                <SearchLoadingItem variant='circle' />
                 <SearchLoadingItem />
-                <SearchLoadingItem variant="circle" />
+                <SearchLoadingItem variant='circle' />
               </>
             )}
           </>
@@ -175,7 +175,7 @@ function SearchGroup<T>({ title, children, result }: SearchGroupProps<T>): JSX.E
 
   return (
     <>
-      <h6 className="mb-2 border-b border-gray-700 pt-4 pb-2 text-base font-medium text-gray-300">
+      <h6 className='mb-2 border-b border-gray-700 pt-4 pb-2 text-base font-medium text-gray-300'>
         {title}
       </h6>
       {children({ result })}
@@ -208,13 +208,13 @@ function CollectionSearchResult({
             { 'bg-gray-700': active }
           )}
         >
-          <div className="flex flex-row items-center gap-6">
+          <div className='flex flex-row items-center gap-6'>
             <img
               src={image}
               alt={name || key}
-              className="aspect-square h-10 w-10 overflow-hidden rounded-md text-sm"
+              className='aspect-square h-10 w-10 overflow-hidden rounded-md text-sm'
             />
-            <p className="m-0 text-sm font-bold">{name}</p>
+            <p className='m-0 text-sm font-bold'>{name}</p>
           </div>
         </div>
       )}
@@ -245,17 +245,17 @@ function MintAddressSearchResult({
             { 'bg-gray-700': active }
           )}
         >
-          <div className="flex flex-row items-center gap-6">
+          <div className='flex flex-row items-center gap-6'>
             <img
               src={image}
               alt={name || key}
-              className="aspect-square h-10 w-10 overflow-hidden rounded-md text-sm"
+              className='aspect-square h-10 w-10 overflow-hidden rounded-md text-sm'
             />
-            <p className="m-0 text-sm font-bold">{name}</p>
+            <p className='m-0 text-sm font-bold'>{name}</p>
           </div>
           {creator && (
-            <div className="flex items-center justify-end gap-4">
-              <p className="m-0 hidden items-center gap-2 text-sm text-gray-300 md:flex">
+            <div className='flex items-center justify-end gap-4'>
+              <p className='m-0 hidden items-center gap-2 text-sm text-gray-300 md:flex'>
                 {creator}
               </p>
             </div>
@@ -290,17 +290,17 @@ function ProfileSearchResult({
             { 'bg-gray-800': active }
           )}
         >
-          <div className="flex flex-row items-center gap-6">
-            <div className="flex h-10 w-10 overflow-clip rounded-full bg-gray-700">
+          <div className='flex flex-row items-center gap-6'>
+            <div className='flex h-10 w-10 overflow-clip rounded-full bg-gray-700'>
               <img
                 src={image}
                 alt={displayName || key}
-                className="min-h-full min-w-full object-cover"
+                className='min-h-full min-w-full object-cover'
               />
             </div>
-            <p className="m-0 text-sm font-bold text-white">{displayName}</p>
+            <p className='m-0 text-sm font-bold text-white'>{displayName}</p>
           </div>
-          <p className="m-0 text-sm text-gray-300 md:inline-block">{shortAddress}</p>
+          <p className='m-0 text-sm text-gray-300 md:inline-block'>{shortAddress}</p>
         </div>
       )}
     </Combobox.Option>
@@ -315,18 +315,18 @@ interface SearchLoadingProps {
 
 function SearchLoadingItem({ variant = 'square' }: SearchLoadingProps): JSX.Element {
   return (
-    <div className="flex flex-row items-center justify-between p-4">
-      <div className="flex flex-row items-center gap-6">
+    <div className='flex flex-row items-center justify-between p-4'>
+      <div className='flex flex-row items-center gap-6'>
         <div
           className={clsx('h-12 w-12 animate-pulse bg-gray-800', {
             'rounded-full': variant === 'circle',
             'rounded-md': variant === 'square',
           })}
         />
-        <div className="h-5 w-24 animate-pulse rounded-md bg-gray-800" />
+        <div className='h-5 w-24 animate-pulse rounded-md bg-gray-800' />
       </div>
       <div>
-        <div className="h-5 w-36 animate-pulse rounded-md bg-gray-800" />
+        <div className='h-5 w-36 animate-pulse rounded-md bg-gray-800' />
       </div>
     </div>
   );
