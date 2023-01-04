@@ -40,7 +40,7 @@ export function Avatar({ src, circle, size, handle }: AvatarProps) {
       {src ? (
         <img
           src={src}
-          alt='avatar'
+          alt="avatar"
           className={clsx(
             'aspect-square object-cover',
             'duration-100 ease-out group-hover:origin-center group-hover:scale-105 group-hover:ease-in'

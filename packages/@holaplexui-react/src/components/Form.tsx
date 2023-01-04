@@ -23,8 +23,8 @@ interface FormLabelProps
 
 function FormLabel({ name, className, children, ...props }: FormLabelProps): JSX.Element {
   return (
-    <label className='form-label' {...props}>
-      <span className='form-label-text'>{name}</span>
+    <label className="form-label" {...props}>
+      <span className="form-label-text">{name}</span>
       {children}
     </label>
   );
@@ -36,7 +36,7 @@ interface FormErrorProps {
 
 function FormError({ message }: FormErrorProps): JSX.Element | null {
   if (message) {
-    return <p className='form-error'>{message}</p>;
+    return <p className="form-error">{message}</p>;
   }
 
   return null;

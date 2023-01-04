@@ -32,22 +32,22 @@ export function Select<T>({
               }
             )}
           >
-            <span className='block truncate text-center'>
+            <span className="block truncate text-center">
               {options.find((o) => o.value === value)?.label}
             </span>
 
-            <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
               <ChevronDownIcon
                 className={clsx('h-5 w-5 text-white', open && 'rotate-180 transition-transform')}
-                aria-hidden='true'
+                aria-hidden="true"
               />
             </span>
           </Listbox.Button>
           <Transition
             as={Fragment}
-            leave='transition ease-in duration-100'
-            leaveFrom='opacity-100'
-            leaveTo='opacity-0'
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
             <Listbox.Options
               className={clsx(
