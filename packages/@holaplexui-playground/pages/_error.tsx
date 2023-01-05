@@ -38,7 +38,7 @@ export default function Page(props: { examples: false | ExamplesType[] }) {
 
       <div className='container mx-auto my-24'>
         <div className='prose'>
-          <h2>Examples</h2>
+          <h2 className='font-semibold'>Examples</h2>
           <Examples examples={props.examples} />
         </div>
       </div>
@@ -54,7 +54,10 @@ export function Examples(props: { examples: ExamplesType[] }) {
           {example.children ? (
             <h3 className='text-xl capitalize'>{example.name}</h3>
           ) : (
-            <NextLink href={example.path} className='capitalize'>
+            <NextLink
+              href={example.path}
+              className='capitalize underline cursor-pointer'
+            >
               {example.name}
             </NextLink>
           )}

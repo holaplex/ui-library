@@ -1,6 +1,6 @@
 import { useWindowWidth } from '@react-hook/window-size';
 import clsx from 'clsx';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { InView } from 'react-intersection-observer';
 
 type ListGridSizeValue = [number, number];

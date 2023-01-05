@@ -9,5 +9,7 @@ export * from './Price';
 export * from './Search';
 export * from './Select';
 export * from './Spinner';
+export * from './Share';
+export * from './Image';
 import 'tailwindcss/tailwind.css';
 import './style.css';

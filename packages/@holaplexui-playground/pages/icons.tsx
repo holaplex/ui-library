@@ -2,7 +2,7 @@ import { Icon } from '@holaplexui/react';
 
 export default function App() {
   return (
-    <div className='flex flex-col gap-4 justify-center items-center p-4'>
+    <div className='flex flex-wrap gap-4 justify-center items-center p-4'>
       Copy
       <Icon.Copy className='w-6 h-6' />
       Currency

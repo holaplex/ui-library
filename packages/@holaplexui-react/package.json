@@ -1,7 +1,7 @@
 {
   "name": "@holaplexui/react",
   "author": "Holaplex Inc.",
-  "version": "0.1.23",
+  "version": "0.1.29",
   "description": "Holaplex modular & composable ui library",
   "type": "module",
   "files": [
