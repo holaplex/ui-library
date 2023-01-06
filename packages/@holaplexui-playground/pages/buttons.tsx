@@ -3,7 +3,8 @@ import { Button } from '@holaplexui/react';
 export default function App() {
   return (
     <div className='flex flex-col gap-4 justify-center items-center p-4'>
-      Rounded Buttons
+      <span className='font-bold underline'>Buttons</span>
+      Rounded
       <div className='flex gap-4'>
         <Button border='rounded' size='small' variant='secondary'>
           Small
@@ -15,7 +16,7 @@ export default function App() {
           Large
         </Button>
       </div>
-      Square Buttons
+      Square
       <div className='flex gap-4'>
         <Button border='square' size='small' variant='secondary'>
           Small
@@ -27,7 +28,7 @@ export default function App() {
           Large
         </Button>
       </div>
-      Circular Buttons
+      Circular
       <div className='flex gap-4'>
         <Button border='circle' size='small' variant='secondary'>
           Small

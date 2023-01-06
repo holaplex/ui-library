@@ -1,5 +1,4 @@
 import { resolve } from 'node:path';
-
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -9,8 +8,11 @@ const { EsLinter, linterPlugin } = EsLint;
 import * as packageJson from './package.json';
 // https://vitejs.dev/config/
 export default defineConfig((configEnv) => ({
+  optimizeDeps: {
+    include: ['react/jsx-runtime'],
+  },
   plugins: [
-    react(),
+    react({ jsxRuntime: 'classic' }),
     tsConfigPaths(),
     linterPlugin({
       include: ['./src/**/*.{ts,tsx}'],
@@ -18,6 +20,7 @@ export default defineConfig((configEnv) => ({
     }),
     dts({
       include: ['src/components/'],
+      insertTypesEntry: true,
     }),
   ],
   build: {

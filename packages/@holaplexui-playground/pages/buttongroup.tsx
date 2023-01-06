@@ -19,8 +19,11 @@ export default function App() {
   const [value, setValue] = useState<string>(options[0].value);
 
   return (
-    <div className='flex flex-col items-center justify-center p-4 bg-gray-800'>
+    <div className='flex flex-col items-center justify-center p-4 gap-4'>
+      <span className='font-bold underline'>ButtonGroup</span>
+
       <ButtonGroup
+        className='bg-gray-900'
         value={value}
         onChange={(value: string | undefined) => {
           value && setValue(value);

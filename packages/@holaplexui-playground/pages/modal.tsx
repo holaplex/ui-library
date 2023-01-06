@@ -7,13 +7,14 @@ export default function App() {
   return (
     <>
       <div className='flex flex-col items-center justify-center p-4'>
+        <span className='font-bold underline'>Modal</span>
         <div
-          className='cursor-pointer text-lg font-bold text-gray-800'
+          className='cursor-pointer text-lg mt-5 font-bold text-gray-800'
           onClick={() => {
             setOpen(true);
           }}
         >
-          Click to open modal!
+          Click to open!
         </div>
       </div>
       <Modal

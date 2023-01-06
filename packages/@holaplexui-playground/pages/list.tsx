@@ -89,6 +89,8 @@ export default function App() {
 
   return (
     <div className='flex flex-col gap-4 justify-center items-center p-4'>
+      <span className='font-bold underline'>List</span>
+
       <List
         data={data}
         loading={false}

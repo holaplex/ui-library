@@ -3,6 +3,8 @@ import { Share } from '@holaplexui/react';
 export default function App() {
   return (
     <div className='flex flex-col gap-4 justify-center items-center p-4'>
+      <span className='font-bold underline'>Share</span>
+
       <Share
         address=''
         twitterParams={{
@@ -11,11 +13,9 @@ export default function App() {
           url: 'https://www.holaplex.com/'
         }}
         shareButton={() => (
-          <div className='underline cursor-pointer font-semibold'>Share</div>
+          <div className='cursor-pointer font-semibold'>Click to share!</div>
         )}
-      >
-        Share
-      </Share>
+      />
     </div>
   );
 }

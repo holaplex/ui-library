@@ -1,7 +1,7 @@
 {
   "name": "@holaplexui/react",
   "author": "Holaplex Inc.",
-  "version": "0.1.29",
+  "version": "0.1.31",
   "description": "Holaplex modular & composable ui library",
   "type": "module",
   "files": [
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "@types/react": "^18.0.24",
+    "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",

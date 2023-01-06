@@ -11,5 +11,7 @@ export * from './Select';
 export * from './Spinner';
 export * from './Share';
 export * from './Image';
+export * from './Flex';
+export * from './Grid';
 import 'tailwindcss/tailwind.css';
 import './style.css';
