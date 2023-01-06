@@ -33,12 +33,12 @@ export default function Page(props: { examples: false | ExamplesType[] }) {
   return (
     <>
       <Head>
-        <title>Examples</title>
+        <title>Components</title>
       </Head>
 
-      <div className='container mx-auto my-24'>
+      <div className='container mx-auto mt-5'>
         <div className='prose'>
-          <h2 className='font-semibold'>Examples</h2>
+          <h2 className='font-semibold mb-2'>Components</h2>
           <Examples examples={props.examples} />
         </div>
       </div>

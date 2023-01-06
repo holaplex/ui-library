@@ -13,7 +13,6 @@ export default function App({ Component, pageProps }: AppProps) {
             👋 Holaplex UI
           </Link>
         </header>
-
         <main className='flex-1 overflow-auto bg-gray-50 px-6'>
           <Component {...pageProps} />
         </main>
