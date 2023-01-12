@@ -1,8 +1,9 @@
 {
-  "name": "@holaplexui/react",
+  "name": "@holaplex/ui-library-react",
   "author": "Holaplex Inc.",
-  "version": "0.1.31",
-  "description": "Holaplex modular & composable ui library",
+  "version": "0.1.1",
+  "description": "Holaplex react ui library components",
+  "private": false,
   "type": "module",
   "files": [
     "dist"
@@ -21,8 +22,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "build-yarn": "yarn clean && tsc && cp package.json README.MD ./dist"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -41,8 +41,6 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
     "prettier": "2.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.6.4",
     "vite": "^3.2.3",
