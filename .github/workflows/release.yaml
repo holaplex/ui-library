@@ -8,12 +8,14 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: production
+    defaults:
+      run:
+        working-directory: ./packages/@holaplexui-react
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
       - run: npm install
-      - run: npm run build --workspace=@holaplex/ui-library-react
+      - run: npm run build
       - uses: JS-DevTools/npm-publish@v1
-        working-directory: ./packages/@holaplexui-react
         with:
           token: ${{ secrets.NPM_TOKEN }}
