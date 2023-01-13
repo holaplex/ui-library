@@ -1,4 +1,4 @@
-import { Row, Col } from '@holaplexui/react';
+import { Row, Col } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

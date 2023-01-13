@@ -1,4 +1,4 @@
-import { Button } from '@holaplexui/react';
+import { Button } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

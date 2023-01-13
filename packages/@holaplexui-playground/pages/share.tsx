@@ -1,4 +1,4 @@
-import { Share } from '@holaplexui/react';
+import { Share } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

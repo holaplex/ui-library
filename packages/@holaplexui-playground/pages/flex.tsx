@@ -1,4 +1,4 @@
-import { Flex, FlexDirection } from '@holaplexui/react';
+import { Flex, FlexDirection } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

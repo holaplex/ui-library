@@ -1,4 +1,4 @@
-import { Modal } from '@holaplexui/react';
+import { Modal } from '@holaplex/ui-library-react';
 import { useState } from 'react';
 
 export default function App() {

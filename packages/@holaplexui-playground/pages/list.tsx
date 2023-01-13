@@ -1,4 +1,4 @@
-import { List, ListGridSize } from '@holaplexui/react';
+import { List, ListGridSize } from '@holaplex/ui-library-react';
 import Image from 'next/image';
 import { useState } from 'react';
 

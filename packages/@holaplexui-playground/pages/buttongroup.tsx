@@ -1,4 +1,4 @@
-import { ButtonGroup } from '@holaplexui/react';
+import { ButtonGroup } from '@holaplex/ui-library-react';
 import { useState } from 'react';
 
 export default function App() {

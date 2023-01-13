@@ -1,4 +1,4 @@
-import { Icon } from '@holaplexui/react';
+import { Icon } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

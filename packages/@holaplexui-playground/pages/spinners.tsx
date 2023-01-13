@@ -1,4 +1,4 @@
-import { Spinner } from '@holaplexui/react';
+import { Spinner } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

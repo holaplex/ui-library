@@ -1,4 +1,4 @@
-import { Img, ImgBackdrop } from '@holaplexui/react';
+import { Img, ImgBackdrop } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

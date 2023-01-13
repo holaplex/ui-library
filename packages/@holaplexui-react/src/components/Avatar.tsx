@@ -42,7 +42,7 @@ export function Avatar({ src, circle, size, handle }: AvatarProps) {
           src={src}
           alt="avatar"
           className={clsx(
-            'aspect-square object-cover',
+            'avatar aspect-square object-cover',
             'duration-100 ease-out group-hover:origin-center group-hover:scale-105 group-hover:ease-in'
           )}
         />
@@ -50,7 +50,7 @@ export function Avatar({ src, circle, size, handle }: AvatarProps) {
         <div
           className={clsx(
             'aspect-square',
-            'bg-theme-default text-white',
+            'avatar',
             'font-semibold',
             'duration-100 ease-out group-hover:origin-center group-hover:scale-105 group-hover:ease-in',
             'flex flex-col justify-center items-center',

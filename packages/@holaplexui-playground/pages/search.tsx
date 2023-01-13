@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Search } from '@holaplexui/react';
+import { Search } from '@holaplex/ui-library-react';
 import { useRef } from 'react';
 
 export default function App() {

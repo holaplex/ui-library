@@ -1,4 +1,4 @@
-import { Price } from '@holaplexui/react';
+import { Price } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

@@ -1,4 +1,4 @@
-import { Select } from '@holaplexui/react';
+import { Select } from '@holaplex/ui-library-react';
 import { useState } from 'react';
 
 export default function App() {
