@@ -1,8 +1,7 @@
 name: Npm Publish
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [created]
 
 jobs:
   publish:
