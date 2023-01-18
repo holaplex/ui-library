@@ -11,7 +11,7 @@ import {
 function NextLink(props: React.ComponentProps<'a'>) {
   let { href, children, ...rest } = props;
   return (
-    <Link legacyBehavior href={href}>
+    <Link legacyBehavior href={href as string}>
       <a {...rest}>{children}</a>
     </Link>
   );

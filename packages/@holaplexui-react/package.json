@@ -4,13 +4,16 @@
   "version": "0.3.0",
   "description": "Holaplex react ui library components",
   "private": false,
-  "type": "module",
   "files": [
-    "dist"
+    "dist/**"
   ],
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react"
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
@@ -24,15 +27,18 @@
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.8",
-    "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
     "prettier": "2.8.1",
     "tailwindcss": "^3.2.4",
+    "tsup": "^6.5.0",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
-    "react": "16.8.0 || >=17.x",
-    "react-dom": "16.8.0 || >=17.x"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

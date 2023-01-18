@@ -1,9 +1,8 @@
 import { Popover, Transition } from '@headlessui/react';
-import { ArrowUpTrayIcon, CheckIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { Fragment } from 'react';
-import useClipboard from '../hooks/clipboard';
-import Button from './Button';
+import { useClipboard } from '../hooks/clipboard';
 
 export function Share(props: {
   address: string;

@@ -139,3 +139,7 @@ a {
 .form-input-error {
   @apply border-red-500;
 }
+
+.price-text {
+  @apply text-white;
+}
