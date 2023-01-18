@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@holaplex/ui-libarary-react": "*",
+    "@holaplex/ui-library-react": "*",
     "@next/font": "13.1.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
