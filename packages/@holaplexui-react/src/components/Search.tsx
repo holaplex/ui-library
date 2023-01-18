@@ -36,6 +36,7 @@ interface SearchInputProps {
 
 const getOs = () => {
   const os = ['Win32', 'Mac']; // add your OS values
+  //@ts-ignore
   return os.find((v) => window?.navigator.platform.indexOf(v) >= 0);
 };
 
@@ -52,6 +53,7 @@ function SearchInput({
   const [searchKeyboardPrompt, setSearchKeyboardPrompt] = useState('CMD + K');
 
   useEffect(() => {
+    //@ts-ignore
     document.addEventListener('keydown', handleKeyDown);
     const os = getOs();
     if (os === 'Win32') {
@@ -60,11 +62,14 @@ function SearchInput({
   }, []);
 
   const handleKeyDown = (e: KeyboardEvent) => {
+    //@ts-ignore
     if (!e.metaKey) return;
+    //@ts-ignore
     switch (e.key) {
       case 'k':
         e.preventDefault();
         e.stopPropagation();
+        //@ts-ignore
         searchInputRef.current?.focus();
         return;
       default:
@@ -75,7 +80,10 @@ function SearchInput({
   return (
     <div className={clsx('group relative block w-full transition-all', className)}>
       <button
-        onClick={useCallback(() => searchInputRef?.current?.focus(), [searchInputRef])}
+        onClick={useCallback(() => {
+          //@ts-ignore
+          searchInputRef?.current?.focus();
+        }, [searchInputRef])}
         className="absolute left-4 flex h-full cursor-pointer items-center rounded-full transition-all duration-300 ease-in-out hover:scale-105"
       >
         <MagnifyingGlassIcon className="h-6 w-6 text-gray-300" aria-hidden="true" />

@@ -23,6 +23,7 @@ export function Img({
   const [hasImageError, setImageError] = useState(false);
 
   useEffect(() => {
+    //@ts-ignore
     const image = new Image();
     image.src = src as string;
 
