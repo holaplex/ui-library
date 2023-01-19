@@ -72,7 +72,11 @@ export default function App() {
       <Form>
         <Form.Label name='Email' />
         <Form.Input />
-        <Form.Label name='Password' className='mt-5' />
+        <Form.Label
+          name='Password'
+          asideComponent={<div className='text-xs'>Forgot Password?</div>}
+          className='mt-5'
+        />
         <Form.Password
           showPasswordIcon={<ShowPasswordIcon />}
           hidePasswordIcon={<HidePasswordIcon />}

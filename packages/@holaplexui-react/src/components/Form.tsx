@@ -20,12 +20,22 @@ export function Form({
 interface FormLabelProps
   extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
   name: string;
+  asideComponent?: JSX.Element;
 }
 
-function FormLabel({ name, className, children, ...props }: FormLabelProps): JSX.Element {
+function FormLabel({
+  name,
+  asideComponent,
+  className,
+  children,
+  ...props
+}: FormLabelProps): JSX.Element {
   return (
     <label className={clsx('form-label', className)} {...props}>
-      <span className="form-label-text">{name}</span>
+      <div className="flex w-full justify-between items-center">
+        <span className="form-label-text">{name}</span>
+        {asideComponent}
+      </div>
       {children}
     </label>
   );
