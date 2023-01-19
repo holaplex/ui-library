@@ -6,6 +6,7 @@ import {
   forwardRef,
   LegacyRef,
   InputHTMLAttributes,
+  useState,
 } from 'react';
 import { FieldError } from 'react-hook-form';
 
@@ -19,16 +20,27 @@ export function Form({
 interface FormLabelProps
   extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
   name: string;
+  asideComponent?: JSX.Element;
 }
 
-function FormLabel({ name, className, children, ...props }: FormLabelProps): JSX.Element {
+function FormLabel({
+  name,
+  asideComponent,
+  className,
+  children,
+  ...props
+}: FormLabelProps): JSX.Element {
   return (
-    <label className="form-label" {...props}>
-      <span className="form-label-text">{name}</span>
+    <label className={clsx('form-label', className)} {...props}>
+      <div className="flex w-full justify-between items-center">
+        <span className="form-label-text">{name}</span>
+        {asideComponent}
+      </div>
       {children}
     </label>
   );
 }
+Form.Label = FormLabel;
 
 interface FormErrorProps {
   message?: string;
@@ -44,8 +56,6 @@ function FormError({ message }: FormErrorProps): JSX.Element | null {
 
 Form.Error = FormError;
 
-Form.Label = FormLabel;
-
 interface FormInputProps
   extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   className?: string;
@@ -58,15 +68,74 @@ const FormInput = forwardRef(function FormInput(
   ref
 ) {
   return (
-    <div className={clsx('form-input', { 'focus-within:form-input-error': error }, className)}>
-      {icon && icon}
+    <div
+      className={clsx(
+        'form-input-container',
+        { 'focus-within:form-input-error': error },
+        className
+      )}
+    >
+      {icon && <div className="form-input-icon-container">{icon}</div>}
+
       <input
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
-        className={clsx('w-full bg-transparent', { 'pl-2': icon })}
+        type="text"
+        className={clsx('form-input', {
+          'ml-1': icon,
+        })}
       />
     </div>
   );
 });
 
 Form.Input = FormInput;
+
+interface FormPasswordProps
+  extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  className?: string;
+  icon?: JSX.Element;
+  showPasswordIcon?: JSX.Element;
+  hidePasswordIcon?: JSX.Element;
+  error?: FieldError;
+}
+
+const FormPassword = forwardRef(function FormPassword(
+  { className, icon, showPasswordIcon, hidePasswordIcon, error, ...props }: FormPasswordProps,
+  ref
+) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  return (
+    <div
+      className={clsx(
+        'form-input-container',
+        { 'focus-within:form-input-error': error },
+        className
+      )}
+    >
+      {icon && <div className="form-input-icon-container">{icon}</div>}
+
+      <input
+        {...props}
+        ref={ref as LegacyRef<HTMLInputElement> | undefined}
+        type={showPassword ? 'text' : 'password'}
+        className={clsx('form-input', {
+          'ml-1': icon,
+          'mr-1': showPasswordIcon && hidePasswordIcon,
+        })}
+      />
+
+      {showPasswordIcon && hidePasswordIcon && (
+        <div
+          className="form-show-password-container"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? showPasswordIcon : hidePasswordIcon}
+        </div>
+      )}
+    </div>
+  );
+});
+
+Form.Password = FormPassword;
