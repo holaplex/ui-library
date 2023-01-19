@@ -71,13 +71,14 @@ export default function App() {
     <div className='w-[400px] mx-auto flex flex-col gap-4 justify-center items-center p-4'>
       <Form>
         <Form.Label name='Email' />
-        <Form.Input />
+        <Form.Input placeholder='e.g. name@example.com' />
         <Form.Label
           name='Password'
           asideComponent={<div className='text-xs'>Forgot Password?</div>}
           className='mt-5'
         />
         <Form.Password
+          placeholder='Enter your password'
           showPasswordIcon={<ShowPasswordIcon />}
           hidePasswordIcon={<HidePasswordIcon />}
         />

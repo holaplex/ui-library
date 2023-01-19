@@ -136,7 +136,7 @@ a {
   @apply flex flex-row w-full items-center rounded-md border border-gray-800;
 }
 .form-input {
-  @apply text-black w-full appearance-none focus:appearance-none border-none focus:border-none outline-none focus:outline-none border-transparent focus:border-transparent;
+  @apply w-full text-black appearance-none focus:appearance-none border-none focus:border-none outline-none focus:outline-none border-transparent focus:border-transparent;
 }
 
 .form-input-icon-container {
