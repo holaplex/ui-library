@@ -15,6 +15,7 @@ interface AvatarProps {
   src?: string;
   circle?: boolean;
   size: AvatarSize;
+  placeholder?: JSX.Element;
 }
 
 const firstLast = (word: string) => {
@@ -22,11 +23,13 @@ const firstLast = (word: string) => {
   return result.toUpperCase();
 };
 
-export function Avatar({ src, circle, size, handle }: AvatarProps) {
+export function Avatar({ src, circle, size, handle, placeholder }: AvatarProps) {
   return (
     <div
-      className={clsx('group relative block overflow-clip', {
+      className={clsx('group relative block overflow-clip aspect-square', {
         'rounded-full': circle,
+        'w-6': size === AvatarSize.Tiny,
+        'w-8': size === AvatarSize.Small,
         'w-12': size === AvatarSize.Standard,
         'w-16': size === AvatarSize.Large,
         'w-20': size === AvatarSize.Jumbo,
@@ -42,10 +45,14 @@ export function Avatar({ src, circle, size, handle }: AvatarProps) {
           src={src}
           alt="avatar"
           className={clsx(
-            'avatar aspect-square object-cover',
+            'avatar aspect-square object-cover h-full w-full',
             'duration-100 ease-out group-hover:origin-center group-hover:scale-105 group-hover:ease-in'
           )}
         />
+      ) : placeholder ? (
+        <div className="duration-100 ease-out group-hover:origin-center group-hover:scale-105 group-hover:ease-in">
+          {placeholder}
+        </div>
       ) : (
         <div
           className={clsx(

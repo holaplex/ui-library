@@ -1,4 +1,4 @@
-import { Avatar, AvatarSize } from '@holaplex/ui-library-react';
+import { Avatar, AvatarSize, Icon } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (

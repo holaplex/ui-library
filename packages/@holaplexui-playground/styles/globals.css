@@ -116,10 +116,6 @@ a {
   border-right-color: transparent;
 }
 
-.avatar {
-  @apply bg-blue-500;
-}
-
 .form-label {
   @apply flex flex-col gap-2;
 }
