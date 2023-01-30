@@ -68,28 +68,29 @@ const FormInput = forwardRef(function FormInput(
   ref
 ) {
   return (
-    <div
-      className={clsx(
-        'flex flex-row w-full items-center',
-        'form-input-container',
-        { 'focus-within:form-input-error': error },
-        className
-      )}
-    >
-      {icon && <div className={clsx('ml-1 mr-1', 'form-input-icon-container')}>{icon}</div>}
-
+    <div className={clsx('relative', { 'focus-within:form-input-error': error }, className)}>
       <input
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         type="text"
         className={clsx(
-          'w-full appearance-none focus:appearance-none border-none focus:border-none outline-none focus:outline-none border-transparent focus:border-transparent',
-          'form-input',
+          'w-full block',
           {
-            'ml-1': icon,
-          }
+            'pl-12': icon,
+          },
+          'form-input'
         )}
       />
+      {icon && (
+        <div
+          className={clsx(
+            'absolute top-1/2 left-0 transform -translate-y-1/2 ml-1',
+            'form-input-icon-container'
+          )}
+        >
+          {icon}
+        </div>
+      )}
     </div>
   );
 });
@@ -112,33 +113,37 @@ const FormPassword = forwardRef(function FormPassword(
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div
-      className={clsx(
-        'flex flex-row w-full items-center',
-        'form-input-container',
-        { 'focus-within:form-input-error': error },
-        className
-      )}
-    >
-      {icon && <div className={clsx('ml-1 mr-1', 'form-input-icon-container')}>{icon}</div>}
-
+    <div className={clsx('relative', { 'focus-within:form-input-error': error }, className)}>
       <input
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         type={showPassword ? 'text' : 'password'}
         className={clsx(
-          'w-full appearance-none focus:appearance-none border-none focus:border-none outline-none focus:outline-none border-transparent focus:border-transparent',
-          'form-input',
+          'w-full block',
           {
-            'ml-1': icon,
-            'mr-1': showPasswordIcon && hidePasswordIcon,
-          }
+            'pl-12': icon,
+            'pr-12': showPasswordIcon && hidePasswordIcon,
+          },
+          'form-input'
         )}
       />
+      {icon && (
+        <div
+          className={clsx(
+            'absolute top-1/2 left-0 transform -translate-y-1/2 ml-1',
+            'form-input-icon-container'
+          )}
+        >
+          {icon}
+        </div>
+      )}
 
       {showPasswordIcon && hidePasswordIcon && (
         <div
-          className={clsx('ml-1 mr-1', 'form-show-password-container')}
+          className={clsx(
+            'absolute top-1/2 right-0 transform -translate-y-1/2 mr-1',
+            'form-show-password-container'
+          )}
           onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? showPasswordIcon : hidePasswordIcon}
