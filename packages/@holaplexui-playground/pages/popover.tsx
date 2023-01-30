@@ -1,4 +1,4 @@
-import { PopoverBox } from '@holaplex/ui-library-react';
+import { Icon, PopoverBox } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (
@@ -10,8 +10,12 @@ export default function App() {
           </span>
         }
         elements={[
-          <div key='option1'>Option 1</div>,
-          <div key='option2'>Option 2</div>
+          <div key='1' className='flex gap-2'>
+            <Icon.Discord /> Open Discord
+          </div>,
+          <div key='2' className='flex gap-2'>
+            <Icon.Twitter /> Open Twitter
+          </div>
         ]}
       />
     </div>

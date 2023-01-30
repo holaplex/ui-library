@@ -29,7 +29,7 @@ export function PopoverBox({
             forceDirection && '-translate-x-[calc(208px-40px)]'
           )}
         >
-          <ul className="w-52 overflow-hidden rounded-md bg-gray-900 p-4 text-white">
+          <ul className="popover overflow-hidden">
             {elements.map((element) => (
               <li key={element.key} className="w-full">
                 {element}

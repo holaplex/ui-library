@@ -3,27 +3,29 @@ import { useMemo } from 'react';
 import { Spinner } from './Spinner';
 
 export interface ButtonProps {
-  variant?: 'default' | 'secondary' | 'success' | 'failure' | 'link';
+  variant?: 'primary' | 'secondary' | 'success' | 'failure' | 'link';
   size?: 'small' | 'medium' | 'large';
   border: 'circle' | 'rounded' | 'square';
   loading?: boolean;
   block?: boolean;
   icon?: React.ReactElement;
+  spinner?: React.ReactElement;
   onClick?: () => any;
   disabled?: boolean;
   circle?: boolean;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   className?: string;
-  children?: any;
+  children?: string;
 }
 
 export const Button = ({
-  variant = 'default',
+  variant = 'primary',
   border = 'rounded',
-  size = 'large',
+  size = 'medium',
   loading = false,
   block = false,
   icon,
+  spinner,
   onClick,
   disabled = false,
   circle = false,
@@ -46,7 +48,7 @@ export const Button = ({
 
   const spinnerColor = useMemo(() => {
     switch (variant) {
-      case 'default':
+      case 'primary':
         return '#17161C';
       case 'secondary':
         return '#bfbfc3';
@@ -61,18 +63,18 @@ export const Button = ({
     }
   }, [variant]);
 
-  const buttonColor = useMemo(() => {
+  const buttonVariant = useMemo(() => {
     switch (variant) {
-      case 'default':
-        return 'bg-button-default text-white';
+      case 'primary':
+        return 'button-variant-primary';
       case 'secondary':
-        return 'bg-button-secondary text-black';
+        return 'button-variant-secondary';
       case 'link':
-        return 'bg-none text-button-default';
+        return 'button-variant-link';
       case 'success':
-        return 'bg-button-success text-white';
+        return 'button-variant-success';
       case 'failure':
-        return 'bg-button-failure text-white';
+        return 'button-variant-failure';
     }
   }, [variant]);
 
@@ -80,9 +82,8 @@ export const Button = ({
     <button
       className={clsx(
         clsx,
-        'group flex grow-0 items-center justify-center rounded-full text-center',
-        className,
-        buttonColor,
+        'group flex grow-0 items-center justify-center text-center',
+        buttonVariant,
         {
           'rounded-md': border === 'rounded',
           'rounded-full': border === 'circle',
@@ -92,7 +93,8 @@ export const Button = ({
           'py-2 px-4': size === 'large',
           'disabled:opacity-50': disabled,
           'px-0 py-0': circle,
-        }
+        },
+        className
       )}
       disabled={disabled}
       type={htmlType}
@@ -100,22 +102,25 @@ export const Button = ({
     >
       <div
         className={clsx(
-          'flex h-full w-full grow-0 items-center justify-center gap-1 rounded-full text-center',
+          'flex h-full w-full grow-0 items-center justify-center gap-2 rounded-full text-center',
           {
-            'py-1 px-4 text-sm': size === 'small',
-            'py-2 px-5 text-base': size === 'medium',
-            'py-2 px-6 text-lg': size === 'large',
+            'button-small': size === 'small',
+            'button-medium': size === 'medium',
+            'button-large': size === 'large',
           }
         )}
       >
-        {loading && (
-          <Spinner
-            height={spinnerSize}
-            width={spinnerSize}
-            color={spinnerColor}
-            className="inline aspect-square mr-2"
-          />
-        )}
+        {loading &&
+          (spinner ? (
+            spinner
+          ) : (
+            <Spinner
+              height={spinnerSize}
+              width={spinnerSize}
+              color={spinnerColor}
+              className="inline aspect-square"
+            />
+          ))}
         {icon && icon}
         {children && <span>{children}</span>}
       </div>

@@ -1,12 +1,12 @@
-import { Button } from '@holaplex/ui-library-react';
+import { Button, Icon } from '@holaplex/ui-library-react';
 
 export default function App() {
   return (
     <div className='flex flex-col gap-4 justify-center items-center p-4'>
       <span className='font-bold underline'>Buttons</span>
       Rounded
-      <div className='flex gap-4'>
-        <Button border='rounded' size='small' variant='secondary'>
+      <div className='flex gap-4 items-center'>
+        <Button border='rounded' size='small'>
           Small
         </Button>
         <Button border='rounded' size='medium'>
@@ -17,8 +17,8 @@ export default function App() {
         </Button>
       </div>
       Square
-      <div className='flex gap-4'>
-        <Button border='square' size='small' variant='secondary'>
+      <div className='flex gap-4 items-center'>
+        <Button border='square' size='small'>
           Small
         </Button>
         <Button border='square' size='medium'>
@@ -29,8 +29,8 @@ export default function App() {
         </Button>
       </div>
       Circular
-      <div className='flex gap-4'>
-        <Button border='circle' size='small' variant='secondary'>
+      <div className='flex gap-4 items-center'>
+        <Button border='circle' size='small'>
           Small
         </Button>
         <Button border='circle' size='medium'>
@@ -38,6 +38,16 @@ export default function App() {
         </Button>
         <Button border='circle' size='large'>
           Large
+        </Button>
+      </div>
+      More
+      <div className='flex gap-4 items-center'>
+        <Button border='rounded' icon={<Icon.Discord />}>
+          With Icon
+        </Button>
+
+        <Button spinner={<div>🔄</div>} border='rounded' loading>
+          With Spinner
         </Button>
       </div>
     </div>
