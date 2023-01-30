@@ -13,5 +13,6 @@ export * from './Share';
 export * from './Image';
 export * from './Flex';
 export * from './Grid';
+export * from './Popover';
 import 'tailwindcss/tailwind.css';
 import './style.css';

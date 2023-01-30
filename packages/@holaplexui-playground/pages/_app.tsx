@@ -1,5 +1,5 @@
-import '../styles/globals.css';
 import '@holaplex/ui-library-react/dist/index.css';
+import '../styles/globals.css';
 
 import type { AppProps } from 'next/app';
 import Link from 'next/link';

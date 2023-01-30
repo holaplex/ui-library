@@ -68,23 +68,29 @@ const FormInput = forwardRef(function FormInput(
   ref
 ) {
   return (
-    <div
-      className={clsx(
-        'form-input-container',
-        { 'focus-within:form-input-error': error },
-        className
-      )}
-    >
-      {icon && <div className="form-input-icon-container">{icon}</div>}
-
+    <div className={clsx('relative', { 'focus-within:form-input-error': error }, className)}>
       <input
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         type="text"
-        className={clsx('form-input', {
-          'ml-1': icon,
-        })}
+        className={clsx(
+          'w-full block',
+          {
+            'pl-12': icon,
+          },
+          'form-input'
+        )}
       />
+      {icon && (
+        <div
+          className={clsx(
+            'absolute top-1/2 left-0 transform -translate-y-1/2 ml-1',
+            'form-input-icon-container'
+          )}
+        >
+          {icon}
+        </div>
+      )}
     </div>
   );
 });
@@ -107,28 +113,37 @@ const FormPassword = forwardRef(function FormPassword(
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div
-      className={clsx(
-        'form-input-container',
-        { 'focus-within:form-input-error': error },
-        className
-      )}
-    >
-      {icon && <div className="form-input-icon-container">{icon}</div>}
-
+    <div className={clsx('relative', { 'focus-within:form-input-error': error }, className)}>
       <input
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         type={showPassword ? 'text' : 'password'}
-        className={clsx('form-input', {
-          'ml-1': icon,
-          'mr-1': showPasswordIcon && hidePasswordIcon,
-        })}
+        className={clsx(
+          'w-full block',
+          {
+            'pl-12': icon,
+            'pr-12': showPasswordIcon && hidePasswordIcon,
+          },
+          'form-input'
+        )}
       />
+      {icon && (
+        <div
+          className={clsx(
+            'absolute top-1/2 left-0 transform -translate-y-1/2 ml-1',
+            'form-input-icon-container'
+          )}
+        >
+          {icon}
+        </div>
+      )}
 
       {showPasswordIcon && hidePasswordIcon && (
         <div
-          className="form-show-password-container"
+          className={clsx(
+            'absolute top-1/2 right-0 transform -translate-y-1/2 mr-1',
+            'form-show-password-container'
+          )}
           onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? showPasswordIcon : hidePasswordIcon}
