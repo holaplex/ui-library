@@ -1,21 +1,21 @@
 import clsx from 'clsx';
-import { useMemo } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Spinner } from './Spinner';
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'success' | 'failure' | 'link';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'failure' | 'link';
   size?: 'small' | 'medium' | 'large';
-  border: 'circle' | 'rounded' | 'square';
+  border?: 'circle' | 'rounded' | 'square';
   loading?: boolean;
   block?: boolean;
-  icon?: React.ReactElement;
-  spinner?: React.ReactElement;
+  icon?: ReactElement;
+  spinner?: ReactElement;
   onClick?: () => any;
   disabled?: boolean;
   circle?: boolean;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   className?: string;
-  children?: string;
+  children?: ReactElement;
 }
 
 export const Button = ({
@@ -69,6 +69,8 @@ export const Button = ({
         return 'button-variant-primary';
       case 'secondary':
         return 'button-variant-secondary';
+      case 'tertiary':
+        return 'button-variant-tertiary';
       case 'link':
         return 'button-variant-link';
       case 'success':

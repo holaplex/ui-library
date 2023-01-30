@@ -31,7 +31,7 @@ export function PopoverBox({
         >
           <ul className="popover overflow-hidden">
             {elements.map((element) => (
-              <li key={element.key} className="w-full">
+              <li key={element.key} className="cursor-pointer">
                 {element}
               </li>
             ))}
