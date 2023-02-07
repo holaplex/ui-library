@@ -15,7 +15,7 @@ export interface ButtonProps {
   circle?: boolean;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   className?: string;
-  children?: ReactElement;
+  children?: ReactElement | string;
 }
 
 export const Button = ({
