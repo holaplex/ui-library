@@ -47,6 +47,7 @@ a {
 .form-input-icon-container {
   @apply p-2 bg-gray-200 rounded-md;
 }
+
 .form-input-error {
   @apply border-red-500;
 }
