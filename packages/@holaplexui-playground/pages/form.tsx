@@ -1,4 +1,4 @@
-import { Form } from '@holaplex/ui-library-react';
+import { Form, Icon } from '@holaplex/ui-library-react';
 
 function HidePasswordIcon({ size = 16, color = 'none', className = '' }) {
   return (
@@ -68,11 +68,12 @@ function ShowPasswordIcon({ size = 16, color = 'none', className = '' }) {
 
 export default function App() {
   return (
-    <div className='w-[400px] mx-auto'>
+    <div className='w-[400px] mx-auto p-4'>
       <Form>
         <Form.Label name='Email'>
           <Form.Input placeholder='e.g. name@example.com' />
         </Form.Label>
+
         <Form.Label
           name='Password'
           asideComponent={<div className='text-xs'>Forgot Password?</div>}
@@ -84,6 +85,7 @@ export default function App() {
             hidePasswordIcon={<HidePasswordIcon />}
           />
         </Form.Label>
+
         <Form.Select
           className='mt-5'
           placeholder='Select blockchain'
@@ -96,7 +98,7 @@ export default function App() {
         <Form.Checkbox
           id='subscribe'
           label='Subscribe newsletter'
-          className='mt-5'
+          className='mt-5 text-xs'
         />
       </Form>
     </div>

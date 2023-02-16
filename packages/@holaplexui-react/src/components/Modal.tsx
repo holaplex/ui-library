@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
-import React, { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
+import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 
 type ModalProps = {
   children: ReactNode;
@@ -15,7 +15,7 @@ type ModalProps = {
 export function Modal(props: ModalProps) {
   return (
     <Transition appear show={props.open} as={Fragment}>
-      <Dialog as="div" className={`font-sans`} onClose={() => props.setOpen(false)}>
+      <Dialog as="div" className="font-sans" onClose={() => props.setOpen(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -27,8 +27,8 @@ export function Modal(props: ModalProps) {
         >
           <div
             className={clsx(
-              'fixed inset-0 z-40', // bg-black bg-opacity-25
-              'bg-gray-800 bg-opacity-40 backdrop-blur-lg ',
+              'fixed inset-0 z-40',
+              'bg-gray-800 bg-opacity-40',
               'transition-opacity duration-500 ease-in-out',
               'flex flex-col items-center justify-center',
               {
@@ -44,7 +44,7 @@ export function Modal(props: ModalProps) {
         <div className={clsx('fixed inset-0 z-40 overflow-y-auto')}>
           <div
             className={clsx(
-              'flex min-h-full items-center justify-center  text-center',
+              'flex min-h-full items-center justify-center text-center',
               !props.scroll ? 'p-4' : 'py-4'
             )}
           >
@@ -59,8 +59,8 @@ export function Modal(props: ModalProps) {
             >
               <Dialog.Panel
                 className={clsx(
-                  'z-40 w-full max-w-md transform !overflow-visible rounded-2xl bg-gray-900  text-left align-middle transition-all',
-                  'scrollbar-thumb-rounded-full relative flex h-full max-h-screen w-full flex-col overflow-y-auto rounded-xl bg-gray-900  text-white shadow-md scrollbar-thin scrollbar-track-gray-900  sm:h-auto  sm:max-w-lg',
+                  'relative z-40 flex flex-col bg-white h-full transform !overflow-visible align-middle transition-all scrollbar-thumb-rounded-full overflow-y-auto rounded-md shadow-md scrollbar-thin max-h-screen max-w-md sm:h-auto sm:max-w-lg',
+                  'modal-content',
                   props.short ? 'sm:max-h-[30rem]' : 'sm:max-h-[50rem]',
                   props.scroll ? 'pt-6' : 'p-6'
                 )}
@@ -68,13 +68,12 @@ export function Modal(props: ModalProps) {
                 <button
                   type="button"
                   onClick={() => props.setOpen(false)}
-                  className="absolute -top-2 -right-2 z-50 rounded-full bg-white p-1 hover:bg-gray-100 hover:text-gray-400"
+                  className="absolute top-1 right-1 z-50 rounded-full bg-gray-50 p-2 hover:bg-gray-100 hover:text-gray-400"
                 >
-                  {/* <Close color={`#ffffff`} /> */}
-                  <XMarkIcon className="h-4 w-4 text-gray-900" />
+                  <XMarkIcon className="h-4 w-4 text-black" />
                 </button>
                 {props.title && (
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6">
                     {props.title}
                   </Dialog.Title>
                 )}

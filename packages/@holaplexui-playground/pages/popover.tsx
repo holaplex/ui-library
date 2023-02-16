@@ -3,10 +3,10 @@ import { Icon, PopoverBox } from '@holaplex/ui-library-react';
 export default function App() {
   return (
     <div className='flex flex-col gap-4 justify-center items-center'>
-      <div className='p-4 border border-gray-400'>
+      <div className='p-4'>
         <PopoverBox
           triggerButton={
-            <button className='font-bold underline cursor-pointer'>
+            <button className='font-bold underline cursor-pointer border border-gray-400'>
               Show Popover
             </button>
           }
