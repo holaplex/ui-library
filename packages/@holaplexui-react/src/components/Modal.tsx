@@ -59,7 +59,7 @@ export function Modal(props: ModalProps) {
             >
               <Dialog.Panel
                 className={clsx(
-                  'relative z-40 flex flex-col bg-white h-full transform !overflow-visible align-middle transition-all scrollbar-thumb-rounded-full overflow-y-auto rounded-md shadow-md scrollbar-thin max-h-screen max-w-md sm:h-auto sm:max-w-lg',
+                  'relative z-40',
                   'modal-content',
                   props.short ? 'sm:max-h-[30rem]' : 'sm:max-h-[50rem]',
                   props.scroll ? 'pt-6' : 'p-6'
@@ -68,12 +68,12 @@ export function Modal(props: ModalProps) {
                 <button
                   type="button"
                   onClick={() => props.setOpen(false)}
-                  className="absolute top-1 right-1 z-50 rounded-full bg-gray-50 p-2 hover:bg-gray-100 hover:text-gray-400"
+                  className={clsx('absolute z-50', 'modal-close')}
                 >
                   <XMarkIcon className="h-4 w-4 text-black" />
                 </button>
                 {props.title && (
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6">
+                  <Dialog.Title as="h3" className="modal-title">
                     {props.title}
                   </Dialog.Title>
                 )}
