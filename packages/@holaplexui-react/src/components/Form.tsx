@@ -74,7 +74,7 @@ const FormInput = forwardRef(function FormInput(
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         type={props.type ?? 'text'}
         className={clsx(
-          'w-full block',
+          'w-full',
           {
             'pl-12': icon,
           },
@@ -118,7 +118,7 @@ const FormPassword = forwardRef(function FormPassword(
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         type={showPassword ? 'text' : 'password'}
         className={clsx(
-          'w-full absolute left-0 top-0',
+          'w-full',
           {
             'pl-12': icon,
             'pr-12': showPasswordIcon && hidePasswordIcon,
@@ -140,7 +140,7 @@ const FormPassword = forwardRef(function FormPassword(
       {showPasswordIcon && hidePasswordIcon && (
         <div
           className={clsx(
-            'absolute top-1/2 right-0 transform -translate-y-1/2 mr-1',
+            'absolute right-0 top-1/2 -translate-y-1/2 mr-1',
             'form-show-password-container'
           )}
           onClick={() => setShowPassword(!showPassword)}
@@ -172,7 +172,7 @@ const FormSelect = forwardRef(function FormSelect(
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
         className={clsx(
-          'w-full block',
+          'w-full',
           {
             'pl-12': icon,
             'pr-12': dropDownIcon,
