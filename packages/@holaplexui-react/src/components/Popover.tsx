@@ -6,15 +6,35 @@ import { usePopper } from 'react-popper';
 export function PopoverBox({
   triggerButton,
   elements,
+  popperPlacement = 'auto',
   children,
 }: {
   triggerButton: JSX.Element;
   elements?: JSX.Element[];
+  popperPlacement:
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end'
+    | 'auto'
+    | 'auto-start'
+    | 'auto-end'
+    | 'top'
+    | 'bottom'
+    | 'right'
+    | 'left';
   children?: ReactNode;
 }) {
   let [referenceElement, setReferenceElement] = useState<any>();
   let [popperElement, setPopperElement] = useState<any>();
-  let { styles, attributes } = usePopper(referenceElement, popperElement);
+  let { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: popperPlacement,
+  });
+
   return (
     <Popover className="relative">
       {({ open }) => (
