@@ -7,9 +7,13 @@ import {
   LegacyRef,
   InputHTMLAttributes,
   useState,
-  SelectHTMLAttributes,
+  Fragment,
+  cloneElement,
 } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
 import { FieldError } from 'react-hook-form';
+import { Icon } from './Icon';
+import { useRef } from 'react';
 
 export function Form({
   children,
@@ -153,66 +157,131 @@ const FormPassword = forwardRef(function FormPassword(
 });
 Form.Password = FormPassword;
 
-interface FormSelectProps
-  extends DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
-  options: { option: string | JSX.Element; value: string }[];
+interface FormSelectProps {
+  onChange: (item: any) => void;
+  value: any;
+  ref?: React.MutableRefObject<HTMLSelectElement | null>;
+  multiple?: boolean;
   className?: string;
   icon?: JSX.Element;
-  dropDownIcon?: JSX.Element;
-  error?: FieldError;
+  children: JSX.Element[];
 }
 
-const FormSelect = forwardRef(function FormSelect(
-  { options, className, icon, error, dropDownIcon, ...props }: FormSelectProps,
-  ref
-) {
+function FormSelect<T>({
+  className,
+  multiple,
+  ref,
+  children,
+  onChange,
+  value,
+}: FormSelectProps) {
   return (
-    <div className={clsx('relative', className)}>
-      <select
-        {...props}
-        ref={ref as LegacyRef<HTMLInputElement> | undefined}
-        className={clsx(
-          'w-full',
-          {
-            'pl-12': icon,
-            'pr-12': dropDownIcon,
-          },
-          'form-input'
-        )}
-      >
-        {props.placeholder && (
-          <option value="" disabled selected>
-            {props.placeholder}
-          </option>
-        )}
-        {options.map((option) => {
-          return (
-            <option key={option.value} value={option.value}>
-              {option.option}
-            </option>
-          );
-        })}
-      </select>
-      {icon && (
-        <div
-          className={clsx(
-            'absolute top-1/2 left-0 transform -translate-y-1/2 ml-1',
-            'form-input-icon-container'
-          )}
-        >
-          {icon}
-        </div>
-      )}
+    <div className={clsx('w-full relative', className)}>
+      <Listbox
+        value={value}
+        multiple={multiple}
+        by="id"
+        onChange={(value) => {
+          onChange(value);
 
-      {dropDownIcon && (
-        <div className={clsx('absolute top-1/2 right-0 transform -translate-y-1/2 mr-1')}>
-          {dropDownIcon}
-        </div>
-      )}
+          if (ref?.current) {
+            ref.current.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        }}
+      >
+        {children}
+      </Listbox>
     </div>
   );
-});
+}
+
 Form.Select = FormSelect;
+
+interface FormSelectButtonProps {
+  icon?: JSX.Element;
+  children: JSX.Element | string | undefined | number;
+  placeholder?: string | JSX.Element;
+  dropdown?: JSX.Element;
+}
+function FormSelectButton({
+  children,
+  icon,
+  placeholder = 'select an option',
+  dropdown = <Icon.ChevronDown />
+}: FormSelectButtonProps): JSX.Element {
+  return (
+    <Listbox.Button
+      className={clsx(
+        'w-full inline-block',
+        'form-select-button',
+        {
+          'pl-12': icon,
+        },
+      )}
+    >
+      {children ? <span>{children}</span> : <span className="form-select-button-placeholder">{placeholder}</span>}
+      <div
+          className={clsx(
+            'absolute top-1/2 right-0 transform -translate-y-1/2 form-select-button-dropdown',
+          )}
+        >
+          {dropdown}
+        </div>
+    </Listbox.Button>
+  );
+}
+
+FormSelect.Button = FormSelectButton;
+
+interface FormSelectOptionsProps {
+  children: JSX.Element[];
+  className?: string;
+}
+
+function FormSelectOptions({ children, className }: FormSelectOptionsProps): JSX.Element {
+  return (
+    <Listbox.Options
+      className={clsx('absolute mt-1 w-full overflow-auto form-select-options', className)}
+    >
+      {children}
+    </Listbox.Options>
+  );
+}
+
+FormSelect.Options = FormSelectOptions;
+
+interface FormSelectOptionProps<T> {
+  key: string;
+  children: JSX.Element;
+  value: T;
+  className?: string;
+}
+
+function FormSelectOption<T>({
+  key,
+  children,
+  value,
+  className,
+}: FormSelectOptionProps<T>): JSX.Element {
+  return (
+    <Listbox.Option key={key} value={value} as={Fragment}>
+      {({ selected, active }) => {
+        return (
+          <li
+            className={clsx(className, 'form-select-option', {
+              'form-select-option-selected cursor-default': selected,
+              'form-select-option-active': active && !selected,
+            })}
+          >
+            {children}
+          </li>
+        );
+      }}
+    </Listbox.Option>
+  );
+}
+
+FormSelect.Option = FormSelectOption;
 
 interface FormCheckboxProps
   extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
@@ -238,4 +307,5 @@ const FormCheckbox = forwardRef(function FormCheckbox(
     </div>
   );
 });
+
 Form.Checkbox = FormCheckbox;
