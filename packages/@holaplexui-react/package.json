@@ -1,7 +1,7 @@
 {
   "name": "@holaplex/ui-library-react",
   "author": "Holaplex Inc.",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Holaplex react ui library components",
   "private": false,
   "files": [
@@ -15,10 +15,12 @@
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.4",
+    "@headlessui/react": "^1.7.11",
     "@heroicons/react": "^2.0.13",
     "@react-hook/window-size": "^3.1.1",
     "clsx": "^1.2.1",
+    "install": "^0.13.0",
+    "npm": "^9.5.1",
     "react-debounce-input": "^3.3.0",
     "react-hook-form": "^7.41.1",
     "react-intersection-observer": "^9.4.1"

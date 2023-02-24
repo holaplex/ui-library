@@ -48,6 +48,37 @@ a {
   @apply p-2 bg-gray-200 rounded-md;
 }
 
+.form-select-options {
+  @apply bg-white p-2 text-base shadow-lg max-h-40 z-10 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm flex flex-col gap-2;
+}
+
+.form-select-button {
+  @apply form-input text-left;
+}
+
+.form-select {
+  @apply text-left;
+}
+.form-select-option {
+  @apply p-2;
+}
+
+.form-select-button-dropdown {
+  @apply mr-2;
+}
+
+.form-select-option-selected {
+  @apply bg-gray-200 rounded-sm;
+}
+
+.form-select-option-active {
+  @apply bg-gray-100 rounded-sm;
+}
+
+.form-select-button-placeholder {
+  @apply text-gray-500;
+}
+
 .form-input-error {
   @apply border-red-500;
 }
