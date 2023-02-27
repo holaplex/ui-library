@@ -111,11 +111,15 @@ a {
   @apply bg-blue-800 text-white;
 }
 
-.popover {
-  @apply rounded-md p-6 bg-black text-white flex flex-col gap-4;
+.popover-content {
+  @apply rounded-md p-6 bg-black text-white;
 }
 
-.modal-content {
+.popover-elements {
+  @apply flex flex-col gap-4;
+}
+
+.modal-panel {
   @apply flex flex-col bg-white h-full transform !overflow-visible align-middle transition-all overflow-y-auto rounded-md shadow-md max-h-screen max-w-md sm:h-auto sm:max-w-lg;
 }
 

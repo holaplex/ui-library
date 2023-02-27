@@ -60,7 +60,7 @@ export function Modal(props: ModalProps) {
               <Dialog.Panel
                 className={clsx(
                   'relative z-40',
-                  'modal-content',
+                  'modal-panel',
                   props.short ? 'sm:max-h-[30rem]' : 'sm:max-h-[50rem]',
                   props.scroll ? 'pt-6' : 'p-6'
                 )}
@@ -77,8 +77,7 @@ export function Modal(props: ModalProps) {
                     {props.title}
                   </Dialog.Title>
                 )}
-
-                {props.children}
+                <div className="modal-content">{props.children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
