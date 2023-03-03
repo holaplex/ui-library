@@ -79,6 +79,8 @@ export default function App() {
     }[]
   >();
 
+  const [droppedImage, setDroppedImage] = useState<File | null>(null);
+
   const options = [
     { name: 'Solana', id: 'sol' },
     { name: 'Polygon', id: 'polygon' },
@@ -149,6 +151,20 @@ export default function App() {
             ))}
           </Form.Select.Options>
         </Form.Select>
+
+        <Form.Label name='Drop Image' className='mt-5'>
+          <Form.DragDropImage
+            onChange={(image) => {
+              setDroppedImage(image);
+            }}
+            value={droppedImage}
+          >
+            <>
+              Drag & drop photo here <br />
+              Required jpeg, png or svg. Max 2mb.
+            </>
+          </Form.DragDropImage>
+        </Form.Label>
 
         <Form.Checkbox
           id='subscribe'
