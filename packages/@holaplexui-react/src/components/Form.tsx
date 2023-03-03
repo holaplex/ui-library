@@ -9,6 +9,8 @@ import {
   useState,
   Fragment,
   cloneElement,
+  Dispatch,
+  SetStateAction,
 } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { FieldError } from 'react-hook-form';
@@ -306,13 +308,12 @@ Form.Checkbox = FormCheckbox;
 
 interface DragDropImageProps {
   onChange: (file: File) => void;
-  value: File | null;
+  setDragActive: Dispatch<SetStateAction<boolean>>;
   children: JSX.Element;
   className?: string;
 }
 
-const DragDropImage = ({ onChange, value, className, children }: DragDropImageProps) => {
-  const [file, setFile] = useState<File | null>(value);
+const DragDropImage = ({ onChange, setDragActive, className, children }: DragDropImageProps) => {
   const { getInputProps, isDragActive } = useDropzone({
     accept: {
       'image/png': ['.png'],
@@ -323,28 +324,17 @@ const DragDropImage = ({ onChange, value, className, children }: DragDropImagePr
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
-        setFile(file);
         onChange(file);
       }
     },
   });
+
+  setDragActive(isDragActive);
+
   return (
     <div className={clsx('relative', className)}>
       <input {...getInputProps()} />
-      <div
-        className={clsx('dragdropimage', {
-          'dragdropimage-drag-active': isDragActive,
-          'dragdropimage-empty': !file,
-        })}
-      >
-        {file ? (
-          <div className="dragdropimage-image-container">
-            <img src={URL.createObjectURL(file)} alt={file.name} className="dragdropimage-image" />
-          </div>
-        ) : (
-          <>{children}</>
-        )}
-      </div>
+      {children}
     </div>
   );
 };
