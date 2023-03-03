@@ -307,7 +307,7 @@ const FormCheckbox = forwardRef(function FormCheckbox(
 Form.Checkbox = FormCheckbox;
 
 interface DragDropImageProps {
-  onChange: (file: File) => void;
+  onChange: (imageUrl: string) => void;
   setDragActive: Dispatch<SetStateAction<boolean>>;
   children: JSX.Element;
   className?: string;
@@ -324,7 +324,7 @@ const DragDropImage = ({ onChange, setDragActive, className, children }: DragDro
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
-        onChange(file);
+        onChange(URL.createObjectURL(file));
       }
     },
   });
