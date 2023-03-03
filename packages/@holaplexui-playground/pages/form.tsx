@@ -81,7 +81,7 @@ export default function App() {
     }[]
   >();
 
-  const [droppedImage, setDroppedImage] = useState<string>();
+  const [droppedImage, setDroppedImage] = useState<File | null>(null);
   const [dragActive, setDragActive] = useState<boolean>(false);
 
   const options = [
@@ -174,8 +174,8 @@ export default function App() {
               {droppedImage ? (
                 <div className='bg-white rounded-lg p-3 overflow-hidden'>
                   <img
-                    src={droppedImage}
-                    alt={droppedImage}
+                    src={URL.createObjectURL(droppedImage)}
+                    alt={droppedImage.name}
                     className='w-full h-48'
                   />
                 </div>
