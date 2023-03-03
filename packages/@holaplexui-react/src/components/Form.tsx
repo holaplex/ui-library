@@ -167,14 +167,7 @@ interface FormSelectProps {
   children: JSX.Element[];
 }
 
-function FormSelect<T>({
-  className,
-  multiple,
-  ref,
-  children,
-  onChange,
-  value,
-}: FormSelectProps) {
+function FormSelect<T>({ className, multiple, ref, children, onChange, value }: FormSelectProps) {
   return (
     <div className={clsx('w-full relative', className)}>
       <Listbox
@@ -207,26 +200,26 @@ function FormSelectButton({
   children,
   icon,
   placeholder = 'select an option',
-  dropdown = <Icon.ChevronDown />
+  dropdown = <Icon.ChevronDown />,
 }: FormSelectButtonProps): JSX.Element {
   return (
     <Listbox.Button
-      className={clsx(
-        'w-full inline-block',
-        'form-select-button',
-        {
-          'pl-12': icon,
-        },
-      )}
+      className={clsx('w-full inline-block', 'form-select-button', {
+        'pl-12': icon,
+      })}
     >
-      {children ? <span>{children}</span> : <span className="form-select-button-placeholder">{placeholder}</span>}
+      {children ? (
+        <span>{children}</span>
+      ) : (
+        <span className="form-select-button-placeholder">{placeholder}</span>
+      )}
       <div
-          className={clsx(
-            'absolute top-1/2 right-0 transform -translate-y-1/2 form-select-button-dropdown',
-          )}
-        >
-          {dropdown}
-        </div>
+        className={clsx(
+          'absolute top-1/2 right-0 transform -translate-y-1/2 form-select-button-dropdown'
+        )}
+      >
+        {dropdown}
+      </div>
     </Listbox.Button>
   );
 }

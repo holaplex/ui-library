@@ -11,7 +11,7 @@ export function PopoverBox({
 }: {
   triggerButton: JSX.Element;
   elements?: JSX.Element[];
-  popperPlacement:
+  popperPlacement?:
     | 'top-start'
     | 'top-end'
     | 'bottom-start'
