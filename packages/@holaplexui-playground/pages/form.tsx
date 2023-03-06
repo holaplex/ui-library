@@ -173,7 +173,7 @@ export default function App() {
                 getInputProps={getInputProps}
                 getRootProps={getRootProps}
                 isDragActive={isDragActive}
-                onChange={onChange}
+                onChange={(e: any) => e.target.files?.[0]}
                 multiple={false}
               >
                 <div
