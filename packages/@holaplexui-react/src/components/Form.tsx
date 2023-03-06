@@ -8,15 +8,11 @@ import {
   InputHTMLAttributes,
   useState,
   Fragment,
-  cloneElement,
-  Dispatch,
-  SetStateAction,
 } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
+import { Listbox } from '@headlessui/react';
 import { FieldError } from 'react-hook-form';
 import { Icon } from './Icon';
-import { useRef } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 export function Form({
   children,
@@ -306,37 +302,36 @@ const FormCheckbox = forwardRef(function FormCheckbox(
 
 Form.Checkbox = FormCheckbox;
 
-interface DragDropImageProps {
-  onChange: (file: File) => void;
-  setDragActive: Dispatch<SetStateAction<boolean>>;
+interface DragDropProps {
+  getInputProps: <T extends DropzoneInputProps>(props?: T | undefined) => T;
+  getRootProps: <T extends DropzoneRootProps>(props?: T | undefined) => T;
+  isDragActive: boolean;
   children: JSX.Element;
   className?: string;
 }
 
-const DragDropImage = ({ onChange, setDragActive, className, children }: DragDropImageProps) => {
-  const { getInputProps, isDragActive } = useDropzone({
-    accept: {
-      'image/png': ['.png'],
-      'image/jpeg': ['.jpeg', '.jpg'],
-      'image/svg': ['.svg'],
-    },
-    maxSize: 2 * 1024 * 1024,
-    onDrop: (acceptedFiles) => {
-      if (acceptedFiles.length > 0) {
-        const file = acceptedFiles[0];
-        onChange(file);
-      }
-    },
-  });
-
-  setDragActive(isDragActive);
-
+const DragDrop = ({
+  getInputProps,
+  getRootProps,
+  isDragActive,
+  className,
+  children,
+}: DragDropProps) => {
   return (
-    <div className={clsx('relative', className)}>
+    <div {...getRootProps()} className={clsx('relative', className)}>
       <input {...getInputProps()} />
       {children}
     </div>
   );
 };
 
-Form.DragDropImage = DragDropImage;
+Form.DragDrop = DragDrop;
+
+interface DragDropPreviewProps {
+  file: File;
+}
+
+const DragDropPreview = ({ file }: DragDropPreviewProps) => {
+  return <img src={URL.createObjectURL(file)} alt={file.name} className="dragdrop-preview-image" />;
+};
+DragDrop.Preview = DragDropPreview;

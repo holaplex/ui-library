@@ -1,7 +1,8 @@
 import { Form, Icon } from '@holaplex/ui-library-react';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import useUpload from '../hooks/useUpload';
 
 function HidePasswordIcon({ size = 16, color = 'none', className = '' }) {
   return (
@@ -81,9 +82,6 @@ export default function App() {
     }[]
   >();
 
-  const [droppedImage, setDroppedImage] = useState<File | null>(null);
-  const [dragActive, setDragActive] = useState<boolean>(false);
-
   const options = [
     { name: 'Solana', id: 'sol' },
     { name: 'Polygon', id: 'polygon' },
@@ -95,6 +93,10 @@ export default function App() {
     { name: 'Bitcoin', id: 'btc' },
     { name: 'Cardano', id: 'ada' }
   ];
+
+  const { getRootProps, getInputProps, isDragActive, droppedFiles } =
+    useUpload();
+
   return (
     <div className='w-[400px] mx-auto p-4'>
       <Form>
@@ -156,28 +158,25 @@ export default function App() {
         </Form.Select>
 
         <Form.Label name='Drop Image' className='mt-5'>
-          <Form.DragDropImage
-            onChange={(image) => {
-              setDroppedImage(image);
-            }}
-            setDragActive={setDragActive}
+          <Form.DragDrop
+            getInputProps={getInputProps}
+            getRootProps={getRootProps}
+            isDragActive={isDragActive}
           >
             <div
               className={clsx(
                 'flex items-center justify-center border border-dashed border-gray-200 cursor-pointer rounded-md',
                 {
-                  'bg-gray-100': dragActive,
-                  'p-6 text-center text-gray-500': !droppedImage
+                  'bg-gray-100': isDragActive,
+                  'p-6 text-center text-gray-500': !droppedFiles
                 }
               )}
             >
-              {droppedImage ? (
+              {droppedFiles ? (
                 <div className='bg-white rounded-lg p-3 overflow-hidden'>
-                  <img
-                    src={URL.createObjectURL(droppedImage)}
-                    alt={droppedImage.name}
-                    className='w-full h-48'
-                  />
+                  {droppedFiles.map((file, index) => (
+                    <Form.DragDrop.Preview key={index} file={file} />
+                  ))}
                 </div>
               ) : (
                 <>
@@ -186,7 +185,7 @@ export default function App() {
                 </>
               )}
             </div>
-          </Form.DragDropImage>
+          </Form.DragDrop>
         </Form.Label>
 
         <Form.Checkbox
