@@ -306,6 +306,8 @@ interface DragDropProps {
   getInputProps: <T extends DropzoneInputProps>(props?: T | undefined) => T;
   getRootProps: <T extends DropzoneRootProps>(props?: T | undefined) => T;
   isDragActive: boolean;
+  onChange: any;
+  multiple?: boolean;
   children: JSX.Element;
   className?: string;
 }
@@ -314,12 +316,19 @@ const DragDrop = ({
   getInputProps,
   getRootProps,
   isDragActive,
+  onChange,
+  multiple = false,
   className,
   children,
 }: DragDropProps) => {
   return (
     <div {...getRootProps()} className={clsx('relative', className)}>
-      <input {...getInputProps()} />
+      <input
+        {...getInputProps({
+          onChange,
+          multiple,
+        })}
+      />
       {children}
     </div>
   );

@@ -1,7 +1,9 @@
 import { Form, Icon } from '@holaplex/ui-library-react';
 import clsx from 'clsx';
+import { watch } from 'fs';
 import { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { Controller, useForm } from 'react-hook-form';
 import useUpload from '../hooks/useUpload';
 
 function HidePasswordIcon({ size = 16, color = 'none', className = '' }) {
@@ -70,6 +72,10 @@ function ShowPasswordIcon({ size = 16, color = 'none', className = '' }) {
   );
 }
 
+interface DragDropForm {
+  files: File[];
+}
+
 export default function App() {
   const [singleValue, setSingleValue] = useState<{
     name: string;
@@ -94,8 +100,9 @@ export default function App() {
     { name: 'Cardano', id: 'ada' }
   ];
 
-  const { getRootProps, getInputProps, isDragActive, droppedFiles } =
-    useUpload();
+  const { getRootProps, getInputProps, isDragActive } = useUpload();
+
+  const { control } = useForm<DragDropForm>();
 
   return (
     <div className='w-[400px] mx-auto p-4'>
@@ -158,34 +165,42 @@ export default function App() {
         </Form.Select>
 
         <Form.Label name='Drop Image' className='mt-5'>
-          <Form.DragDrop
-            getInputProps={getInputProps}
-            getRootProps={getRootProps}
-            isDragActive={isDragActive}
-          >
-            <div
-              className={clsx(
-                'flex items-center justify-center border border-dashed border-gray-200 cursor-pointer rounded-md',
-                {
-                  'bg-gray-100': isDragActive,
-                  'p-6 text-center text-gray-500': !droppedFiles
-                }
-              )}
-            >
-              {droppedFiles ? (
-                <div className='bg-white rounded-lg p-3 overflow-hidden'>
-                  {droppedFiles.map((file, index) => (
-                    <Form.DragDrop.Preview key={index} file={file} />
-                  ))}
+          <Controller
+            name='files'
+            control={control}
+            render={({ field: { value, onChange } }) => (
+              <Form.DragDrop
+                getInputProps={getInputProps}
+                getRootProps={getRootProps}
+                isDragActive={isDragActive}
+                onChange={onChange}
+                multiple={false}
+              >
+                <div
+                  className={clsx(
+                    'flex items-center justify-center border border-dashed border-gray-200 cursor-pointer rounded-md',
+                    {
+                      'bg-gray-100': isDragActive,
+                      'p-6 text-center text-gray-500': !value
+                    }
+                  )}
+                >
+                  {value ? (
+                    <div className='bg-white rounded-lg p-3 overflow-hidden'>
+                      {value.map((file, index) => (
+                        <Form.DragDrop.Preview key={index} file={file} />
+                      ))}
+                    </div>
+                  ) : (
+                    <>
+                      Drag & drop photo here <br />
+                      Required jpeg, png or svg. Max 2mb.
+                    </>
+                  )}
                 </div>
-              ) : (
-                <>
-                  Drag & drop photo here <br />
-                  Required jpeg, png or svg. Max 2mb.
-                </>
-              )}
-            </div>
-          </Form.DragDrop>
+              </Form.DragDrop>
+            )}
+          />
         </Form.Label>
 
         <Form.Checkbox
