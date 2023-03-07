@@ -1,7 +1,7 @@
 import { Form, Icon } from '@holaplex/ui-library-react';
 import clsx from 'clsx';
 import { watch } from 'fs';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Controller, useForm } from 'react-hook-form';
 import useUpload from '../hooks/useUpload';
@@ -100,9 +100,14 @@ export default function App() {
     { name: 'Cardano', id: 'ada' }
   ];
 
-  const { getRootProps, getInputProps, isDragActive } = useUpload();
-
-  const { control } = useForm<DragDropForm>();
+  const { control, setValue } = useForm<DragDropForm>();
+  const onDrop = useCallback(
+    (files: File[]) => {
+      setValue('files', files, { shouldValidate: true });
+    },
+    [setValue]
+  );
+  const { getRootProps, getInputProps, isDragActive } = useUpload(onDrop);
 
   return (
     <div className='w-[400px] mx-auto p-4'>
@@ -173,7 +178,7 @@ export default function App() {
                 getInputProps={getInputProps}
                 getRootProps={getRootProps}
                 isDragActive={isDragActive}
-                onChange={(e: any) => e.target.files?.[0]}
+                onChange={(e: any) => onChange(e.target.value)}
                 multiple={false}
               >
                 <div

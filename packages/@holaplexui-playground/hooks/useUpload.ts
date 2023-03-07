@@ -10,19 +10,17 @@ interface UploadContext {
   isDragActive: boolean;
 }
 
-export default function useUpload(): UploadContext {
+export default function useUpload(
+  onDrop: (files: File[]) => void
+): UploadContext {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       'image/png': ['.png'],
       'image/jpeg': ['.jpeg', '.jpg'],
       'image/svg': ['.svg']
     },
-    maxSize: 2 * 1024 * 1024
-    // onDrop: (acceptedFiles) => {
-    //   if (acceptedFiles.length > 0) {
-
-    //   }
-    // }
+    maxSize: 2 * 1024 * 1024,
+    onDrop
   });
 
   return {
