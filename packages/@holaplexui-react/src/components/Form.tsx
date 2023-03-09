@@ -8,12 +8,11 @@ import {
   InputHTMLAttributes,
   useState,
   Fragment,
-  cloneElement,
 } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
+import { Listbox } from '@headlessui/react';
 import { FieldError } from 'react-hook-form';
 import { Icon } from './Icon';
-import { useRef } from 'react';
+import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 export function Form({
   children,
@@ -167,14 +166,7 @@ interface FormSelectProps {
   children: JSX.Element[];
 }
 
-function FormSelect<T>({
-  className,
-  multiple,
-  ref,
-  children,
-  onChange,
-  value,
-}: FormSelectProps) {
+function FormSelect<T>({ className, multiple, ref, children, onChange, value }: FormSelectProps) {
   return (
     <div className={clsx('w-full relative', className)}>
       <Listbox
@@ -207,26 +199,26 @@ function FormSelectButton({
   children,
   icon,
   placeholder = 'select an option',
-  dropdown = <Icon.ChevronDown />
+  dropdown = <Icon.ChevronDown />,
 }: FormSelectButtonProps): JSX.Element {
   return (
     <Listbox.Button
-      className={clsx(
-        'w-full inline-block',
-        'form-select-button',
-        {
-          'pl-12': icon,
-        },
-      )}
+      className={clsx('w-full inline-block', 'form-select-button', {
+        'pl-12': icon,
+      })}
     >
-      {children ? <span>{children}</span> : <span className="form-select-button-placeholder">{placeholder}</span>}
+      {children ? (
+        <span>{children}</span>
+      ) : (
+        <span className="form-select-button-placeholder">{placeholder}</span>
+      )}
       <div
-          className={clsx(
-            'absolute top-1/2 right-0 transform -translate-y-1/2 form-select-button-dropdown',
-          )}
-        >
-          {dropdown}
-        </div>
+        className={clsx(
+          'absolute top-1/2 right-0 transform -translate-y-1/2 form-select-button-dropdown'
+        )}
+      >
+        {dropdown}
+      </div>
     </Listbox.Button>
   );
 }
@@ -309,3 +301,46 @@ const FormCheckbox = forwardRef(function FormCheckbox(
 });
 
 Form.Checkbox = FormCheckbox;
+
+interface DragDropProps {
+  getInputProps: <T extends DropzoneInputProps>(props?: T | undefined) => T;
+  getRootProps: <T extends DropzoneRootProps>(props?: T | undefined) => T;
+  isDragActive: boolean;
+  onChange: any;
+  multiple?: boolean;
+  children: JSX.Element;
+  className?: string;
+}
+
+const DragDrop = ({
+  getInputProps,
+  getRootProps,
+  isDragActive,
+  onChange,
+  multiple = false,
+  className,
+  children,
+}: DragDropProps) => {
+  return (
+    <div {...getRootProps()} className={clsx('relative', className)}>
+      <input
+        {...getInputProps({
+          onChange,
+          multiple,
+        })}
+      />
+      {children}
+    </div>
+  );
+};
+
+Form.DragDrop = DragDrop;
+
+interface DragDropPreviewProps {
+  file: File;
+}
+
+const DragDropPreview = ({ file }: DragDropPreviewProps) => {
+  return <img src={URL.createObjectURL(file)} alt={file.name} className="dragdrop-preview-image" />;
+};
+DragDrop.Preview = DragDropPreview;
