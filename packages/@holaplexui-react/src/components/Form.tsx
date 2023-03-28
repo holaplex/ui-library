@@ -341,12 +341,7 @@ interface DragDropPreviewProps {
 }
 
 const DragDropPreview = ({ value }: DragDropPreviewProps) => {
-  if (value instanceof File) {
-    return (
-      <img src={URL.createObjectURL(value)} alt={value.name} className="dragdrop-preview-image" />
-    );
-  } else {
-    return <img src={value} alt={value} className="dragdrop-preview-image" />;
-  }
+  const src: string = value instanceof File ? URL.createObjectURL(value) : value;
+  return <img src={src} alt="drag & drop preview" className="dragdrop-preview-image" />;
 };
 DragDrop.Preview = DragDropPreview;
