@@ -193,7 +193,7 @@ export default function App() {
                   {value ? (
                     <div className='bg-white rounded-lg p-3 overflow-hidden'>
                       {value.map((file, index) => (
-                        <Form.DragDrop.Preview key={index} file={file} />
+                        <Form.DragDrop.Preview key={index} value={file} />
                       ))}
                     </div>
                   ) : (

@@ -337,10 +337,11 @@ const DragDrop = ({
 Form.DragDrop = DragDrop;
 
 interface DragDropPreviewProps {
-  file: File;
+  value: File | string;
 }
 
-const DragDropPreview = ({ file }: DragDropPreviewProps) => {
-  return <img src={URL.createObjectURL(file)} alt={file.name} className="dragdrop-preview-image" />;
+const DragDropPreview = ({ value }: DragDropPreviewProps) => {
+  const src: string = value instanceof File ? URL.createObjectURL(value) : value;
+  return <img src={src} alt="drag & drop preview" className="dragdrop-preview-image" />;
 };
 DragDrop.Preview = DragDropPreview;
