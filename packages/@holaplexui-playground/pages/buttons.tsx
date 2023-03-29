@@ -46,8 +46,12 @@ export default function App() {
           With Icon
         </Button>
 
-        <Button spinner={<div>🔄</div>} border='rounded' loading>
+        <Button border='rounded' loading>
           With Spinner
+        </Button>
+
+        <Button spinner={<div>🔄</div>} border='rounded' loading>
+          With Custom Spinner
         </Button>
       </div>
     </div>

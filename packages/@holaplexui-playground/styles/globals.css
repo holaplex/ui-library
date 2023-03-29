@@ -19,10 +19,16 @@ a {
   text-decoration: none;
 }
 
-.spinner-border {
-  vertical-align: -0.125em;
-  border: solid currentColor;
-  border-right-color: transparent;
+.spinner {
+  @apply inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-r-transparent border-current align-[-0.125em];
+}
+
+.spinner-primary {
+  @apply border-white border-r-transparent;
+}
+
+.spinner-secondary {
+  @apply border-black border-r-transparent;
 }
 
 .form-label {
