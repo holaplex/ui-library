@@ -46,20 +46,20 @@ export const Button = ({
     }
   }, [size]);
 
-  const spinnerColor = useMemo(() => {
+  const spinnerVariant = useMemo(() => {
     switch (variant) {
       case 'primary':
-        return '#17161C';
+        return 'spinner-primary';
       case 'secondary':
-        return '#bfbfc3';
+        return 'spinner-secondary';
       case 'success':
-        return '#ffffff';
+        return 'spinner-success';
       case 'failure':
-        return '#ffffff';
+        return 'spinner-failure';
       case 'link':
-        return '#1f75cb';
+        return 'spinner-link';
       default:
-        return '#ffffff';
+        return 'spinner-primary';
     }
   }, [variant]);
 
@@ -116,12 +116,7 @@ export const Button = ({
           (spinner ? (
             spinner
           ) : (
-            <Spinner
-              height={spinnerSize}
-              width={spinnerSize}
-              color={spinnerColor}
-              className="inline aspect-square"
-            />
+            <Spinner variant={spinnerVariant} className="inline aspect-square" />
           ))}
         {icon && icon}
         {children && <span>{children}</span>}
