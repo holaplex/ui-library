@@ -302,6 +302,48 @@ const FormCheckbox = forwardRef(function FormCheckbox(
 
 Form.Checkbox = FormCheckbox;
 
+interface FormRadioButtonGroupProps
+  extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  items: { label: string; value: string; id: string }[];
+  groupName: string;
+  onOptionChange?: () => void;
+  className?: string;
+}
+
+const FormRadioButtonGroup = forwardRef(function FormRadioButtonGroup(
+  { items, groupName, onOptionChange, className, ...props }: FormRadioButtonGroupProps,
+  ref
+) {
+  return (
+    <div className={clsx('flex flex-col gap-2 items-start', 'form-radiobuttongroup', className)}>
+      {items.map((item) => {
+        return (
+          <div
+            className={clsx('flex gap-2 items-center', 'form-radiobuttongroup-item')}
+            key={item.id}
+          >
+            <input
+              {...props}
+              ref={ref as LegacyRef<HTMLInputElement> | undefined}
+              type="radio"
+              name={groupName}
+              value={item.value}
+              id={item.id}
+              className={clsx('form-radiobuttongroup-input')}
+              onChange={onOptionChange}
+            />
+            <label htmlFor={item.id} className="form-radiobuttongroup-label">
+              {item.label}
+            </label>
+          </div>
+        );
+      })}
+    </div>
+  );
+});
+
+Form.RadioButtonGroup = FormRadioButtonGroup;
+
 interface DragDropProps {
   getInputProps: <T extends DropzoneInputProps>(props?: T | undefined) => T;
   getRootProps: <T extends DropzoneRootProps>(props?: T | undefined) => T;

@@ -213,6 +213,14 @@ export default function App() {
           label='Subscribe newsletter'
           className='mt-5 text-xs'
         />
+        <Form.RadioButtonGroup
+          className='mt-5'
+          groupName='fruits'
+          items={[
+            { id: 'apple', value: 'Apple', label: 'Apple' },
+            { id: 'mango', value: 'Mango', label: 'Mango' }
+          ]}
+        />
       </Form>
     </div>
   );
