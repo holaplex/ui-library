@@ -1,4 +1,4 @@
-import { Form, Icon } from '@holaplex/ui-library-react';
+import { Form, Icon, Placement } from '@holaplex/ui-library-react';
 import clsx from 'clsx';
 import { watch } from 'fs';
 import { useCallback, useState } from 'react';
@@ -207,20 +207,22 @@ export default function App() {
             )}
           />
         </Form.Label>
-
-        <Form.Checkbox
-          id='subscribe'
-          label='Subscribe newsletter'
+        <Form.Label
+          name='Subscribe newsletter'
+          placement={Placement.Right}
           className='mt-5 text-xs'
-        />
-        <Form.RadioButtonGroup
-          className='mt-5'
-          groupName='fruits'
-          items={[
-            { id: 'apple', value: 'Apple', label: 'Apple' },
-            { id: 'mango', value: 'Mango', label: 'Mango' }
-          ]}
-        />
+        >
+          <Form.Checkbox id='subscribe' />
+        </Form.Label>
+
+        <Form.RadioGroup className='mt-5'>
+          <Form.Label name='Apple' placement={Placement.Right}>
+            <Form.RadioGroup.Radio value='apple' name='fruits' />
+          </Form.Label>
+          <Form.Label name='Mango' placement={Placement.Right}>
+            <Form.RadioGroup.Radio value='Mango' name='fruits' />
+          </Form.Label>
+        </Form.RadioGroup>
       </Form>
     </div>
   );

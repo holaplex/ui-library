@@ -32,7 +32,7 @@ a {
 }
 
 .form-label {
-  @apply flex flex-col gap-1;
+  @apply gap-1;
 }
 
 .form-label-text {
@@ -139,4 +139,8 @@ a {
 
 .dragdrop-preview-image {
   @apply w-full h-48;
+}
+
+.form-radio-group {
+  @apply flex flex-col gap-2;
 }
