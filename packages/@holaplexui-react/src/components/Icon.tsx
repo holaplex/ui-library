@@ -321,7 +321,7 @@ interface ChevronDownIconProps {
 }
 
 function ChevronDownIcon({
-  className = 'text-black',
+  className = 'stroke-inherit',
   width = 8,
   height = 4,
 }: ChevronDownIconProps) {
@@ -336,7 +336,6 @@ function ChevronDownIcon({
     >
       <path
         d="M1.3335 0.667969L4.00016 3.33464L6.66683 0.667969"
-        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

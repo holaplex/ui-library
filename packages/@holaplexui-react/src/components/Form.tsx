@@ -9,7 +9,7 @@ import {
   useState,
   Fragment,
 } from 'react';
-import { Listbox } from '@headlessui/react';
+import { Listbox, RadioGroup } from '@headlessui/react';
 import { FieldError } from 'react-hook-form';
 import { Icon } from './Icon';
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
@@ -21,21 +21,43 @@ export function Form({
   return <form {...props}>{children}</form>;
 }
 
+export enum Placement {
+  Right,
+  Left,
+  Top,
+  Bottom,
+}
+
 interface FormLabelProps
   extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
   name: string;
+  placement?: Placement;
   asideComponent?: JSX.Element;
 }
 
 function FormLabel({
   name,
+  placement = Placement.Top,
   asideComponent,
   className,
   children,
   ...props
 }: FormLabelProps): JSX.Element {
   return (
-    <label className={clsx('form-label', className)} {...props}>
+    <label
+      className={clsx(
+        'flex',
+        {
+          'flex-col': placement === Placement.Top,
+          'flex-col-reverse': placement === Placement.Bottom,
+          'flex-row-reverse items-center': placement === Placement.Right,
+          'flex-row items-center': placement === Placement.Left,
+        },
+        'form-label',
+        className
+      )}
+      {...props}
+    >
       <div className="flex w-full justify-between items-center">
         <span className="form-label-text">{name}</span>
         {asideComponent}
@@ -214,7 +236,8 @@ function FormSelectButton({
       )}
       <div
         className={clsx(
-          'absolute top-1/2 right-0 transform -translate-y-1/2 form-select-button-dropdown'
+          'absolute top-1/2 right-0 transform -translate-y-1/2 stroke-black',
+          'form-select-button-dropdown'
         )}
       >
         {dropdown}
@@ -277,30 +300,51 @@ FormSelect.Option = FormSelectOption;
 
 interface FormCheckboxProps
   extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  label?: string | JSX.Element;
   className?: string;
 }
 
 const FormCheckbox = forwardRef(function FormCheckbox(
-  { label, className, ...props }: FormCheckboxProps,
+  { className, ...props }: FormCheckboxProps,
   ref
 ) {
   return (
-    <div className={clsx('flex gap-2 items-center', className)}>
-      <input
-        {...props}
-        ref={ref as LegacyRef<HTMLInputElement> | undefined}
-        type="checkbox"
-        className={clsx('form-checkbox')}
-      />
-      <label htmlFor={props.id} className="form-checkbox-label">
-        {label}
-      </label>
-    </div>
+    <input
+      {...props}
+      ref={ref as LegacyRef<HTMLInputElement> | undefined}
+      type="checkbox"
+      className={clsx('form-checkbox', className)}
+    />
   );
 });
 
 Form.Checkbox = FormCheckbox;
+
+interface FormRadioGroupProps {
+  children: JSX.Element[];
+  className?: string;
+}
+
+function FormRadioGroup({ children, className }: FormRadioGroupProps) {
+  return <div className={clsx('form-radio-group', className)}>{children}</div>;
+}
+Form.RadioGroup = FormRadioGroup;
+
+interface FormRadioProps
+  extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  className?: string;
+}
+
+const FormRadio = forwardRef(function FormRadio({ className, ...props }: FormRadioProps, ref) {
+  return (
+    <input
+      {...props}
+      ref={ref as LegacyRef<HTMLInputElement> | undefined}
+      type="radio"
+      className={clsx('form-radio', className)}
+    />
+  );
+});
+FormRadioGroup.Radio = FormRadio;
 
 interface DragDropProps {
   getInputProps: <T extends DropzoneInputProps>(props?: T | undefined) => T;
