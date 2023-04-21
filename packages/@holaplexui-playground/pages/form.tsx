@@ -223,6 +223,33 @@ export default function App() {
             <Form.RadioGroup.Radio value='Mango' name='fruits' />
           </Form.Label>
         </Form.RadioGroup>
+
+        <Form.RadioGroup className='mt-5'>
+          <Form.Label
+            name='Red'
+            htmlFor='red'
+            peerClassName='peer-checked:text-red-500'
+          >
+            <Form.RadioGroup.Radio
+              id='red'
+              value='red'
+              name='color'
+              className='peer hidden'
+            />
+          </Form.Label>
+          <Form.Label
+            name='Green'
+            htmlFor='green'
+            peerClassName='peer-checked:text-green-500'
+          >
+            <Form.RadioGroup.Radio
+              id='green'
+              value='green'
+              name='color'
+              className='peer hidden'
+            />
+          </Form.Label>
+        </Form.RadioGroup>
       </Form>
     </div>
   );
