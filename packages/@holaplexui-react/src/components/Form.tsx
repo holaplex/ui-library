@@ -32,6 +32,7 @@ interface FormLabelProps
   extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
   name: string;
   placement?: Placement;
+  peerClassName?: string;
   asideComponent?: JSX.Element;
 }
 
@@ -39,6 +40,7 @@ function FormLabel({
   name,
   placement = Placement.Top,
   asideComponent,
+  peerClassName,
   className,
   children,
   ...props
@@ -48,21 +50,21 @@ function FormLabel({
       className={clsx(
         'flex',
         {
-          'flex-col': placement === Placement.Top,
-          'flex-col-reverse': placement === Placement.Bottom,
-          'flex-row-reverse items-center': placement === Placement.Right,
-          'flex-row items-center': placement === Placement.Left,
+          'flex-col': placement === Placement.Bottom,
+          'flex-col-reverse': placement === Placement.Top,
+          'flex-row-reverse items-center': placement === Placement.Left,
+          'flex-row items-center': placement === Placement.Right,
         },
         'form-label',
         className
       )}
       {...props}
     >
-      <div className="flex w-full justify-between items-center">
+      {children}
+      <div className={clsx('flex w-full justify-between items-center', peerClassName)}>
         <span className="form-label-text">{name}</span>
         {asideComponent}
       </div>
-      {children}
     </label>
   );
 }
