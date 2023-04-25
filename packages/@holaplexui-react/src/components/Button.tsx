@@ -5,7 +5,6 @@ import { Spinner } from './Spinner';
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'failure' | 'link';
   size?: 'small' | 'medium' | 'large';
-  border?: 'circle' | 'rounded' | 'square';
   loading?: boolean;
   block?: boolean;
   icon?: ReactElement;
@@ -20,7 +19,6 @@ export interface ButtonProps {
 
 export const Button = ({
   variant = 'primary',
-  border = 'rounded',
   size = 'medium',
   loading = false,
   block = false,
@@ -33,19 +31,6 @@ export const Button = ({
   className,
   children,
 }: ButtonProps): JSX.Element => {
-  const spinnerSize = useMemo(() => {
-    switch (size) {
-      case 'small':
-        return '10px';
-      case 'medium':
-        return '15px';
-      case 'large':
-        return '20px';
-      default:
-        return '15px';
-    }
-  }, [size]);
-
   const spinnerVariant = useMemo(() => {
     switch (variant) {
       case 'primary':
@@ -84,17 +69,15 @@ export const Button = ({
     <button
       className={clsx(
         clsx,
-        'group flex grow-0 items-center justify-center text-center',
+        'group flex grow-0 items-center justify-center text-center gap-2',
         buttonVariant,
         {
-          'rounded-md': border === 'rounded',
-          'rounded-full': border === 'circle',
-          'rounded-none': border === 'square',
           'w-full': block,
-          'py-1 px-2 text-sm': size === 'small' || size === 'medium',
-          'py-2 px-4': size === 'large',
           'disabled:opacity-50': disabled,
           'px-0 py-0': circle,
+          'button-small': size === 'small',
+          'button-medium': size === 'medium',
+          'button-large': size === 'large',
         },
         className
       )}
@@ -102,25 +85,10 @@ export const Button = ({
       type={htmlType}
       onClick={onClick}
     >
-      <div
-        className={clsx(
-          'flex h-full w-full grow-0 items-center justify-center gap-2 rounded-full text-center',
-          {
-            'button-small': size === 'small',
-            'button-medium': size === 'medium',
-            'button-large': size === 'large',
-          }
-        )}
-      >
-        {loading &&
-          (spinner ? (
-            spinner
-          ) : (
-            <Spinner variant={spinnerVariant} className="inline aspect-square" />
-          ))}
-        {icon && icon}
-        {children && <span>{children}</span>}
-      </div>
+      {loading &&
+        (spinner ? spinner : <Spinner variant={spinnerVariant} className="inline aspect-square" />)}
+      {icon && icon}
+      {children && <span>{children}</span>}
     </button>
   );
 };
