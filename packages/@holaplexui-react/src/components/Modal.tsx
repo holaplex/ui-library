@@ -70,7 +70,7 @@ export function Modal(props: ModalProps) {
                   onClick={() => props.setOpen(false)}
                   className={clsx('absolute z-50', 'modal-close')}
                 >
-                  <XMarkIcon className="h-4 w-4 text-black" />
+                  <XMarkIcon className="h-4 w-4 modal-close-icon" />
                 </button>
                 {props.title && (
                   <Dialog.Title as="h3" className="modal-title">
