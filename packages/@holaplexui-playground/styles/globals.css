@@ -125,8 +125,12 @@ a {
   @apply flex flex-col gap-4;
 }
 
+.modal-scrim {
+  @apply bg-gray-800 bg-opacity-40;
+}
+
 .modal-panel {
-  @apply flex flex-col bg-white h-full transform !overflow-visible align-middle transition-all overflow-y-auto rounded-md shadow-md max-h-screen max-w-md sm:h-auto sm:max-w-lg;
+  @apply flex z-20 flex-col bg-white h-full transform !overflow-visible align-middle transition-all overflow-y-auto rounded-md shadow-md max-h-screen max-w-md sm:h-auto sm:max-w-lg;
 }
 
 .modal-close {
