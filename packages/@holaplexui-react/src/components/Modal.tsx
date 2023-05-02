@@ -28,7 +28,7 @@ export function Modal(props: ModalProps) {
           <div
             className={clsx(
               'fixed inset-0 z-40',
-              'bg-gray-800 bg-opacity-40',
+              'modal-scrim',
               'transition-opacity duration-500 ease-in-out',
               'flex flex-col items-center justify-center',
               {

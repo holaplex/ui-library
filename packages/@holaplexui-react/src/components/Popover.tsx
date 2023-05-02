@@ -55,7 +55,7 @@ export function PopoverBox({
               ref={setPopperElement}
               style={styles.popper}
               {...attributes.popper}
-              className={clsx('absolute z-20 w-auto', 'popover-panel')}
+              className={clsx('absolute w-auto', 'popover-panel')}
             >
               <div className="overflow-hidden popover-content">
                 <>
