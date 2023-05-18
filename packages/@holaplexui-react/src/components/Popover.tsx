@@ -36,7 +36,7 @@ export function PopoverBox({
   });
 
   return (
-    <Popover className="relative">
+    <Popover className="relative inline-block">
       {({ open }) => (
         <>
           <Popover.Button as="div" ref={setReferenceElement}>

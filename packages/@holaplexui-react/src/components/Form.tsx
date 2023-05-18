@@ -8,6 +8,7 @@ import {
   InputHTMLAttributes,
   useState,
   Fragment,
+  TextareaHTMLAttributes,
 } from 'react';
 import { Listbox, RadioGroup } from '@headlessui/react';
 import { FieldError } from 'react-hook-form';
@@ -88,10 +89,11 @@ interface FormInputProps
   className?: string;
   icon?: JSX.Element;
   error?: FieldError;
+  type?: string;
 }
 
 const FormInput = forwardRef(function FormInput(
-  { className, icon, error, ...props }: FormInputProps,
+  { className, icon, error, type, ...props }: FormInputProps,
   ref
 ) {
   return (
@@ -99,7 +101,7 @@ const FormInput = forwardRef(function FormInput(
       <input
         {...props}
         ref={ref as LegacyRef<HTMLInputElement> | undefined}
-        type={props.type ?? 'text'}
+        type={type ?? 'text'}
         className={clsx(
           'w-full',
           {
@@ -122,6 +124,29 @@ const FormInput = forwardRef(function FormInput(
   );
 });
 Form.Input = FormInput;
+
+interface FormTextAreaProps
+  extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
+  className?: string;
+  error?: FieldError;
+}
+
+const FormTextArea = forwardRef(function FormTextArea(
+  { className, error, ...props }: FormTextAreaProps,
+  ref
+) {
+  return (
+    <div className={clsx('relative', { 'focus-within:form-textarea-error': error }, className)}>
+      <textarea
+        {...props}
+        ref={ref as LegacyRef<HTMLTextAreaElement> | undefined}
+        className={clsx('w-full', 'form-textarea')}
+      />
+    </div>
+  );
+});
+
+Form.TextArea = FormTextArea;
 
 interface FormPasswordProps
   extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
