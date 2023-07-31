@@ -21,8 +21,6 @@ export default function App() {
         <Icon.Discord className='w-6 h-6' />
         Web
         <Icon.Web className='w-6 h-6' />
-        Sauce
-        <Icon.Sauce className='w-6 h-6' />
       </div>
     </div>
   );

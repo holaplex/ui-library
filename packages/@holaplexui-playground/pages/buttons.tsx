@@ -6,51 +6,17 @@ export default function App() {
       <span className='font-bold underline'>Buttons</span>
       Rounded
       <div className='flex gap-4 items-center'>
-        <Button border='rounded' size='small'>
-          Small
-        </Button>
-        <Button border='rounded' size='medium'>
-          Medium
-        </Button>
-        <Button border='rounded' size='large'>
-          Large
-        </Button>
-      </div>
-      Square
-      <div className='flex gap-4 items-center'>
-        <Button border='square' size='small'>
-          Small
-        </Button>
-        <Button border='square' size='medium'>
-          Medium
-        </Button>
-        <Button border='square' size='large'>
-          Large
-        </Button>
-      </div>
-      Circular
-      <div className='flex gap-4 items-center'>
-        <Button border='circle' size='small'>
-          Small
-        </Button>
-        <Button border='circle' size='medium'>
-          Medium
-        </Button>
-        <Button border='circle' size='large'>
-          Large
-        </Button>
+        <Button size='small'>Small</Button>
+        <Button size='medium'>Medium</Button>
+        <Button size='large'>Large</Button>
       </div>
       More
       <div className='flex gap-4 items-center'>
-        <Button border='rounded' icon={<Icon.Discord />}>
-          With Icon
-        </Button>
+        <Button icon={<Icon.Discord />}>With Icon</Button>
 
-        <Button border='rounded' loading>
-          With Spinner
-        </Button>
+        <Button loading>With Spinner</Button>
 
-        <Button spinner={<div>🔄</div>} border='rounded' loading>
+        <Button spinner={<div>🔄</div>} loading>
           With Custom Spinner
         </Button>
       </div>
