@@ -41,7 +41,7 @@ export function Modal(props: ModalProps) {
           />
         </Transition.Child>
 
-        <div className={clsx('fixed inset-0 z-40 overflow-y-auto')}>
+        <div className={clsx('fixed inset-0 z-40 overflow-y-auto modal-page')}>
           <div
             className={clsx(
               'flex min-h-full items-center justify-center text-center',
