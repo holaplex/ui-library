@@ -31,7 +31,7 @@ export enum Placement {
 
 interface FormLabelProps
   extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
-  name: string;
+  name: string | JSX.Element;
   placement?: Placement;
   peerClassName?: string;
   asideComponent?: JSX.Element;
